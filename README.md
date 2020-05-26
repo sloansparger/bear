@@ -28,8 +28,25 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`bear create [FILE]`](#bear-create-file)
 * [`bear hello [FILE]`](#bear-hello-file)
 * [`bear help [COMMAND]`](#bear-help-command)
+
+## `bear create [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ bear create [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/create.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/create.ts)_
 
 ## `bear hello [FILE]`
 
