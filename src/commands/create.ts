@@ -60,7 +60,7 @@ export default class Create extends Command {
 
   async run() {
     const { flags, args } = this.parse(Create);
-    const { tag, file, ...rest } = flags;
+    const { tag = [], file, ...rest } = flags;
     const { textFile } = args;
 
     type Params = typeof rest & { file?: string; tags: string };
