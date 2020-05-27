@@ -30,7 +30,7 @@ USAGE
 <!-- commands -->
 * [`bear create [TEXTFILE]`](#bear-create-textfile)
 * [`bear help [COMMAND]`](#bear-help-command)
-* [`bear locked [FILE]`](#bear-locked-file)
+* [`bear locked [SEARCH]`](#bear-locked-search)
 * [`bear open-tag [NAME]`](#bear-open-tag-name)
 * [`bear search [TERM]`](#bear-search-term)
 * [`bear today [SEARCH]`](#bear-today-search)
@@ -81,18 +81,20 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.0.1/src/commands/help.ts)_
 
-## `bear locked [FILE]`
+## `bear locked [SEARCH]`
 
-describe the command here
+Select the Locked sidebar item.
 
 ```
 USAGE
-  $ bear locked [FILE]
+  $ bear locked [SEARCH]
+
+ARGUMENTS
+  SEARCH  string to search
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -h, --help         show CLI help
+  -w, --show-window  force the opening of bear main window
 ```
 
 _See code: [src/commands/locked.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/locked.ts)_
@@ -117,7 +119,7 @@ _See code: [src/commands/open-tag.ts](https://github.com/sloansparger/bear/blob/
 
 ## `bear search [TERM]`
 
-describe the command here
+Show search results in Bear for all notes or for a specific tag.
 
 ```
 USAGE
