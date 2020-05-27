@@ -31,7 +31,8 @@ USAGE
 * [`bear create [TEXTFILE]`](#bear-create-textfile)
 * [`bear hello [FILE]`](#bear-hello-file)
 * [`bear help [COMMAND]`](#bear-help-command)
-* [`bear open-tag [FILE]`](#bear-open-tag-file)
+* [`bear open-tag [NAME]`](#bear-open-tag-name)
+* [`bear today [FILE]`](#bear-today-file)
 
 ## `bear create [TEXTFILE]`
 
@@ -98,13 +99,31 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.0.1/src/commands/help.ts)_
 
-## `bear open-tag [FILE]`
+## `bear open-tag [NAME]`
+
+Show all the notes which have a selected tag in bear.
+
+```
+USAGE
+  $ bear open-tag [NAME]
+
+ARGUMENTS
+  NAME  tag name
+
+OPTIONS
+  -h, --help         show CLI help
+  -t, --token=token  application token
+```
+
+_See code: [src/commands/open-tag.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/open-tag.ts)_
+
+## `bear today [FILE]`
 
 describe the command here
 
 ```
 USAGE
-  $ bear open-tag [FILE]
+  $ bear today [FILE]
 
 OPTIONS
   -f, --force
@@ -112,5 +131,5 @@ OPTIONS
   -n, --name=name  name to print
 ```
 
-_See code: [src/commands/open-tag.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/open-tag.ts)_
+_See code: [src/commands/today.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/today.ts)_
 <!-- commandsstop -->

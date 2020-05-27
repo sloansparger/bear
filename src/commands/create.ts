@@ -12,50 +12,50 @@ export default class Create extends Command {
     text: flags.string({
       char: "b",
       description:
-        "note body. overriden if a text file is provided as an argument.",
+        "note body. overriden if a text file is provided as an argument."
     }),
     tag: flags.string({
       char: "t",
       description: "tag for note",
-      multiple: true,
+      multiple: true
     }),
     file: flags.string({ char: "f", description: "path to a file attachment" }),
     filename: flags.string({
       char: "a",
-      description: "override file name including extension",
+      description: "override file name including extension"
     }),
     "open-note": flags.boolean({
       char: "o",
-      description: "display the new note in Bear's main or external window",
+      description: "display the new note in Bear's main or external window"
     }),
     "new-note": flags.boolean({
       char: "e",
-      description: "open the note in an external window",
+      description: "open the note in an external window"
     }),
     "show-window": flags.boolean({
-      char: "s",
-      description: "force the opening of bear main window",
+      char: "w",
+      description: "force the opening of bear main window"
     }),
     pin: flags.boolean({
       char: "p",
-      description: "pin the note to the top of the list",
+      description: "pin the note to the top of the list"
     }),
     edit: flags.boolean({
       char: "c",
-      description: "place the cursor inside the note editor",
+      description: "place the cursor inside the note editor"
     }),
     timestamp: flags.boolean({
       char: "d",
-      description: "prepend the current date and time to the text",
-    }),
+      description: "prepend the current date and time to the text"
+    })
   };
 
   static args = [
     {
       name: "textFile",
       description:
-        "text file containing note body. overrides text flag if provided.",
-    },
+        "text file containing note body. overrides text flag if provided."
+    }
   ];
 
   async run() {
