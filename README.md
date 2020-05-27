@@ -29,11 +29,11 @@ USAGE
 # Commands
 <!-- commands -->
 * [`bear create [TEXTFILE]`](#bear-create-textfile)
-* [`bear hello [FILE]`](#bear-hello-file)
 * [`bear help [COMMAND]`](#bear-help-command)
 * [`bear open-tag [NAME]`](#bear-open-tag-name)
-* [`bear search [FILE]`](#bear-search-file)
+* [`bear search [TERM]`](#bear-search-term)
 * [`bear today [SEARCH]`](#bear-today-search)
+* [`bear todo [FILE]`](#bear-todo-file)
 
 ## `bear create [TEXTFILE]`
 
@@ -62,26 +62,6 @@ OPTIONS
 ```
 
 _See code: [src/commands/create.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/create.ts)_
-
-## `bear hello [FILE]`
-
-describe the command here
-
-```
-USAGE
-  $ bear hello [FILE]
-
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
-
-EXAMPLE
-  $ bear hello
-  hello world from ./src/hello.ts!
-```
-
-_See code: [src/commands/hello.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/hello.ts)_
 
 ## `bear help [COMMAND]`
 
@@ -113,30 +93,34 @@ ARGUMENTS
 
 OPTIONS
   -h, --help         show CLI help
-  -t, --token=token  application token
+  -x, --token=token  application token
 ```
 
 _See code: [src/commands/open-tag.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/open-tag.ts)_
 
-## `bear search [FILE]`
+## `bear search [TERM]`
 
 describe the command here
 
 ```
 USAGE
-  $ bear search [FILE]
+  $ bear search [TERM]
+
+ARGUMENTS
+  TERM  string to search
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -h, --help         show CLI help
+  -t, --tag=tag      tag to search into
+  -w, --show-window  force the opening of bear main window
+  -x, --token=token  application token
 ```
 
 _See code: [src/commands/search.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/search.ts)_
 
 ## `bear today [SEARCH]`
 
-describe the command here
+Select the Today sidebar item.
 
 ```
 USAGE
@@ -147,9 +131,25 @@ ARGUMENTS
 
 OPTIONS
   -h, --help         show CLI help
-  -t, --token=token  application token
   -w, --show-window  force the opening of bear main window
+  -x, --token=token  application token
 ```
 
 _See code: [src/commands/today.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/today.ts)_
+
+## `bear todo [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ bear todo [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/todo.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/todo.ts)_
 <!-- commandsstop -->
