@@ -2,7 +2,7 @@ import { Command, flags } from "@oclif/command";
 const { execSync } = require("child_process");
 
 export default class Today extends Command {
-  static description = "describe the command here";
+  static description = "Select the Today sidebar item.";
 
   static flags = {
     help: flags.help({ char: "h" }),
