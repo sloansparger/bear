@@ -32,7 +32,8 @@ USAGE
 * [`bear hello [FILE]`](#bear-hello-file)
 * [`bear help [COMMAND]`](#bear-help-command)
 * [`bear open-tag [NAME]`](#bear-open-tag-name)
-* [`bear today [FILE]`](#bear-today-file)
+* [`bear search [FILE]`](#bear-search-file)
+* [`bear today [SEARCH]`](#bear-today-search)
 
 ## `bear create [TEXTFILE]`
 
@@ -56,8 +57,8 @@ OPTIONS
   -n, --title=title        note title
   -o, --open-note          display the new note in Bear's main or external window
   -p, --pin                pin the note to the top of the list
-  -s, --show-window        force the opening of bear main window
   -t, --tag=tag            tag for note
+  -w, --show-window        force the opening of bear main window
 ```
 
 _See code: [src/commands/create.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/create.ts)_
@@ -117,18 +118,37 @@ OPTIONS
 
 _See code: [src/commands/open-tag.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/open-tag.ts)_
 
-## `bear today [FILE]`
+## `bear search [FILE]`
 
 describe the command here
 
 ```
 USAGE
-  $ bear today [FILE]
+  $ bear search [FILE]
 
 OPTIONS
   -f, --force
   -h, --help       show CLI help
   -n, --name=name  name to print
+```
+
+_See code: [src/commands/search.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/search.ts)_
+
+## `bear today [SEARCH]`
+
+describe the command here
+
+```
+USAGE
+  $ bear today [SEARCH]
+
+ARGUMENTS
+  SEARCH  string to search
+
+OPTIONS
+  -h, --help         show CLI help
+  -t, --token=token  application token
+  -w, --show-window  force the opening of bear main window
 ```
 
 _See code: [src/commands/today.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/today.ts)_

@@ -6,7 +6,7 @@ export default class OpenTag extends Command {
 
   static flags = {
     help: flags.help({ char: "h" }),
-    token: flags.string({ char: "t", description: "application token" })
+    token: flags.string({ char: "x", description: "application token" })
   };
 
   static args = [{ name: "name", description: "tag name" }];

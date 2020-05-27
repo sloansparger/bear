@@ -1,8 +1,8 @@
 import { Command, flags } from "@oclif/command";
 const { execSync } = require("child_process");
 
-export default class Today extends Command {
-  static description = "Select the Today sidebar item.";
+export default class Search extends Command {
+  static description = "describe the command here";
 
   static flags = {
     help: flags.help({ char: "h" }),
@@ -10,19 +10,20 @@ export default class Today extends Command {
       char: "w",
       description: "force the opening of bear main window"
     }),
+    tag: flags.string({ char: "t", description: "tag to search into" }),
     token: flags.string({ char: "x", description: "application token" })
   };
 
-  static args = [{ name: "search", description: "string to search" }];
+  static args = [{ name: "term", description: "string to search" }];
 
   async run() {
-    const { args, flags } = this.parse(Today);
+    const { args, flags } = this.parse(Search);
     const params = { ...flags, ...args };
 
     const xCallbackParams = Object.entries(params)
       .map(([key, value]) => `${key}=${encodeURIComponent(String(value))}`)
       .join("&");
 
-    execSync(`open "bear://x-callback-url/today?${xCallbackParams}"`);
+    execSync(`open "bear://x-callback-url/search?${xCallbackParams}"`);
   }
 }
