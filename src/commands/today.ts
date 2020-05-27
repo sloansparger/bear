@@ -1,5 +1,5 @@
 import { Command, flags } from "@oclif/command";
-const { execSync } = require("child_process");
+import { execXCallback } from "../utils/x-callback";
 
 export default class Today extends Command {
   static description = "Select the Today sidebar item.";
@@ -19,10 +19,6 @@ export default class Today extends Command {
     const { args, flags } = this.parse(Today);
     const params = { ...flags, ...args };
 
-    const xCallbackParams = Object.entries(params)
-      .map(([key, value]) => `${key}=${encodeURIComponent(String(value))}`)
-      .join("&");
-
-    execSync(`open "bear://x-callback-url/today?${xCallbackParams}"`);
+    execXCallback("today", params);
   }
 }

@@ -1,8 +1,9 @@
 import { Command, flags } from "@oclif/command";
-const { execSync } = require("child_process");
+import { execXCallback } from "../utils/x-callback";
 
 export default class Search extends Command {
-  static description = "describe the command here";
+  static description =
+    "Show search results in Bear for all notes or for a specific tag.";
 
   static flags = {
     help: flags.help({ char: "h" }),
@@ -20,10 +21,6 @@ export default class Search extends Command {
     const { args, flags } = this.parse(Search);
     const params = { ...flags, ...args };
 
-    const xCallbackParams = Object.entries(params)
-      .map(([key, value]) => `${key}=${encodeURIComponent(String(value))}`)
-      .join("&");
-
-    execSync(`open "bear://x-callback-url/search?${xCallbackParams}"`);
+    execXCallback("search", params);
   }
 }

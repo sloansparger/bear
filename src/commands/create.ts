@@ -1,7 +1,7 @@
 import { Command, flags } from "@oclif/command";
+import { execXCallback } from "../utils/x-callback";
 const fs = require("fs");
 const path = require("path");
-const { execSync } = require("child_process");
 
 export default class Create extends Command {
   static description = "Create a new note. Empty notes are not allowed.";
@@ -76,10 +76,6 @@ export default class Create extends Command {
       params.text = fs.readFileSync(path.join(process.cwd(), textFile), "utf8");
     }
 
-    const xCallbackParams = Object.entries(params)
-      .map(([key, value]) => `${key}=${encodeURIComponent(String(value))}`)
-      .join("&");
-
-    execSync(`open "bear://x-callback-url/create?${xCallbackParams}"`);
+    execXCallback("create", params);
   }
 }

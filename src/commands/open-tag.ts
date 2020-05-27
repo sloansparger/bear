@@ -1,5 +1,5 @@
 import { Command, flags } from "@oclif/command";
-const { execSync } = require("child_process");
+import { execXCallback } from "../utils/x-callback";
 
 export default class OpenTag extends Command {
   static description = "Show all the notes which have a selected tag in bear.";
@@ -13,13 +13,8 @@ export default class OpenTag extends Command {
 
   async run() {
     const { args, flags } = this.parse(OpenTag);
-
     const params = { ...flags, ...args };
 
-    const xCallbackParams = Object.entries(params)
-      .map(([key, value]) => `${key}=${encodeURIComponent(String(value))}`)
-      .join("&");
-
-    execSync(`open "bear://x-callback-url/open-tag?${xCallbackParams}"`);
+    execXCallback("open-tag", params);
   }
 }

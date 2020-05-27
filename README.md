@@ -30,10 +30,11 @@ USAGE
 <!-- commands -->
 * [`bear create [TEXTFILE]`](#bear-create-textfile)
 * [`bear help [COMMAND]`](#bear-help-command)
+* [`bear locked [FILE]`](#bear-locked-file)
 * [`bear open-tag [NAME]`](#bear-open-tag-name)
 * [`bear search [TERM]`](#bear-search-term)
 * [`bear today [SEARCH]`](#bear-today-search)
-* [`bear todo [FILE]`](#bear-todo-file)
+* [`bear todo [SEARCH]`](#bear-todo-search)
 
 ## `bear create [TEXTFILE]`
 
@@ -79,6 +80,22 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.0.1/src/commands/help.ts)_
+
+## `bear locked [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ bear locked [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/locked.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/locked.ts)_
 
 ## `bear open-tag [NAME]`
 
@@ -137,18 +154,21 @@ OPTIONS
 
 _See code: [src/commands/today.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/today.ts)_
 
-## `bear todo [FILE]`
+## `bear todo [SEARCH]`
 
-describe the command here
+Select the Todo sidebar item.
 
 ```
 USAGE
-  $ bear todo [FILE]
+  $ bear todo [SEARCH]
+
+ARGUMENTS
+  SEARCH  string to search
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -h, --help         show CLI help
+  -w, --show-window  force the opening of bear main window
+  -x, --token=token  application token
 ```
 
 _See code: [src/commands/todo.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/todo.ts)_
