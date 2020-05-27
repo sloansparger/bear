@@ -28,22 +28,35 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`bear create [FILE]`](#bear-create-file)
+* [`bear create [TEXTFILE]`](#bear-create-textfile)
 * [`bear hello [FILE]`](#bear-hello-file)
 * [`bear help [COMMAND]`](#bear-help-command)
+* [`bear open-tag [FILE]`](#bear-open-tag-file)
 
-## `bear create [FILE]`
+## `bear create [TEXTFILE]`
 
-describe the command here
+Create a new note. Empty notes are not allowed.
 
 ```
 USAGE
-  $ bear create [FILE]
+  $ bear create [TEXTFILE]
+
+ARGUMENTS
+  TEXTFILE  text file containing note body. overrides text flag if provided.
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -a, --filename=filename  override file name including extension
+  -b, --text=text          note body. overriden if a text file is provided as an argument.
+  -c, --edit               place the cursor inside the note editor
+  -d, --timestamp          prepend the current date and time to the text
+  -e, --new-note           open the note in an external window
+  -f, --file=file          path to a file attachment
+  -h, --help               show CLI help
+  -n, --title=title        note title
+  -o, --open-note          display the new note in Bear's main or external window
+  -p, --pin                pin the note to the top of the list
+  -s, --show-window        force the opening of bear main window
+  -t, --tag=tag            tag for note
 ```
 
 _See code: [src/commands/create.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/create.ts)_
@@ -84,4 +97,20 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.0.1/src/commands/help.ts)_
+
+## `bear open-tag [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ bear open-tag [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/open-tag.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/open-tag.ts)_
 <!-- commandsstop -->
