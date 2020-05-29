@@ -6,6 +6,11 @@ export interface Note {
   pin: boolean;
 }
 
+export interface FullNote extends Note {
+  note: string;
+  is_trashed: boolean;
+}
+
 export type NoteId = Pick<Note, "identifier" | "title">;
 
 export type Notes = Note[];

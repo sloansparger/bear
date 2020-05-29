@@ -33,7 +33,7 @@ export default class Create extends Command {
       char: "o",
       description: "display the new note in Bear's main or external window"
     }),
-    "new-note": flags.boolean({
+    "new-window": flags.boolean({
       char: "e",
       description: "open the note in an external window"
     }),

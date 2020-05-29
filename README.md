@@ -33,6 +33,7 @@ USAGE
 * [`bear grab-url URL`](#bear-grab-url-url)
 * [`bear help [COMMAND]`](#bear-help-command)
 * [`bear locked [SEARCH]`](#bear-locked-search)
+* [`bear open-note [FILE]`](#bear-open-note-file)
 * [`bear open-tag NAME`](#bear-open-tag-name)
 * [`bear search [TERM]`](#bear-search-term)
 * [`bear tags`](#bear-tags)
@@ -146,6 +147,22 @@ OPTIONS
 ```
 
 _See code: [src/commands/locked.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/locked.ts)_
+
+## `bear open-note [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ bear open-note [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/open-note.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/open-note.ts)_
 
 ## `bear open-tag NAME`
 
