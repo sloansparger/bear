@@ -3,6 +3,7 @@
 import {
   Notes,
   NotesResponse,
+  NoteContents,
   FullNote,
   NoteId,
   Tags,
@@ -25,6 +26,10 @@ export function logNoteId(noteId: NoteId) {
 
 export function logFullNote(fullNote: FullNote) {
   console.log(fullNote);
+}
+
+export function logNoteContents(noteContents: NoteContents) {
+  console.log(noteContents);
 }
 
 export function logTags({ tags }: TagsResponse): void {

@@ -11,6 +11,11 @@ export interface FullNote extends Note {
   is_trashed: boolean;
 }
 
+export interface NoteContents {
+  title: string;
+  note: string;
+}
+
 export type NoteId = Pick<Note, "identifier" | "title">;
 
 export type Notes = Note[];

@@ -28,12 +28,13 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`bear add-text [FILE]`](#bear-add-text-file)
 * [`bear auth API-TOKEN`](#bear-auth-api-token)
 * [`bear create [TEXTFILE]`](#bear-create-textfile)
 * [`bear grab-url URL`](#bear-grab-url-url)
 * [`bear help [COMMAND]`](#bear-help-command)
 * [`bear locked [SEARCH]`](#bear-locked-search)
-* [`bear open-note [FILE]`](#bear-open-note-file)
+* [`bear open-note [ID]`](#bear-open-note-id)
 * [`bear open-tag NAME`](#bear-open-tag-name)
 * [`bear search [TERM]`](#bear-search-term)
 * [`bear tags`](#bear-tags)
@@ -41,6 +42,22 @@ USAGE
 * [`bear todo [SEARCH]`](#bear-todo-search)
 * [`bear trash [ID]`](#bear-trash-id)
 * [`bear untagged [SEARCH]`](#bear-untagged-search)
+
+## `bear add-text [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ bear add-text [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/add-text.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/add-text.ts)_
 
 ## `bear auth API-TOKEN`
 
@@ -78,7 +95,7 @@ OPTIONS
   -b, --text=text          note body. overriden if a text file is provided as an argument.
   -c, --edit               place the cursor inside the note editor
   -d, --timestamp          prepend the current date and time to the text
-  -e, --new-note           open the note in an external window
+  -e, --new-window         open the note in an external window
   -f, --file=file          path to a file attachment
   -h, --help               show CLI help
   -n, --title=title        note title
@@ -148,18 +165,29 @@ OPTIONS
 
 _See code: [src/commands/locked.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/locked.ts)_
 
-## `bear open-note [FILE]`
+## `bear open-note [ID]`
 
-describe the command here
+Open a note identified by its title or id and return its content.
 
 ```
 USAGE
-  $ bear open-note [FILE]
+  $ bear open-note [ID]
+
+ARGUMENTS
+  ID  note unique identifier
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -c, --edit             place the cursor inside the note editor
+  -c, --selected         return the note currently selected in Bear
+  -e, --new-window       open the note in an external window
+  -f, --float            makes the external window float on top
+  -h, --help             show CLI help
+  -o, --open-note        display the new note in Bear's main or external window
+  -p, --pin              pin the note to the top of the list
+  -s, --header=header    note title
+  -t, --title=title      note title
+  -w, --show-window      force the opening of bear main window
+  -x, --exclude-trashed  exclude trashed notes
 ```
 
 _See code: [src/commands/open-note.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/open-note.ts)_
