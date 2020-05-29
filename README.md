@@ -34,6 +34,7 @@ USAGE
 * [`bear change-font FONT`](#bear-change-font-font)
 * [`bear change-theme THEME`](#bear-change-theme-theme)
 * [`bear create [TEXTFILE]`](#bear-create-textfile)
+* [`bear delete-tag [FILE]`](#bear-delete-tag-file)
 * [`bear grab-url URL`](#bear-grab-url-url)
 * [`bear help [COMMAND]`](#bear-help-command)
 * [`bear locked [SEARCH]`](#bear-locked-search)
@@ -214,6 +215,22 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/create.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/create.ts)_
+
+## `bear delete-tag [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ bear delete-tag [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/delete-tag.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/delete-tag.ts)_
 
 ## `bear grab-url URL`
 
