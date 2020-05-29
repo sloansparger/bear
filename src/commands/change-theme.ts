@@ -37,7 +37,8 @@ export default class ChangeTheme extends Command {
         "Solarized Dark",
         "Solarized Light",
         "Toothpaste"
-      ]
+      ],
+      required: true
     }
   ];
 

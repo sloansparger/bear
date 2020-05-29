@@ -31,14 +31,15 @@ USAGE
 * [`bear add-file FILE`](#bear-add-file-file)
 * [`bear add-text TEXT`](#bear-add-text-text)
 * [`bear auth API-TOKEN`](#bear-auth-api-token)
-* [`bear change-theme [THEME]`](#bear-change-theme-theme)
+* [`bear change-font FONT`](#bear-change-font-font)
+* [`bear change-theme THEME`](#bear-change-theme-theme)
 * [`bear create [TEXTFILE]`](#bear-create-textfile)
 * [`bear grab-url URL`](#bear-grab-url-url)
 * [`bear help [COMMAND]`](#bear-help-command)
 * [`bear locked [SEARCH]`](#bear-locked-search)
 * [`bear open-note [ID]`](#bear-open-note-id)
 * [`bear open-tag NAME`](#bear-open-tag-name)
-* [`bear rename-tag [FILE]`](#bear-rename-tag-file)
+* [`bear rename-tag NAME NEW-NAME`](#bear-rename-tag-name-new-name)
 * [`bear search [TERM]`](#bear-search-term)
 * [`bear tags`](#bear-tags)
 * [`bear today SEARCH`](#bear-today-search)
@@ -144,13 +145,31 @@ DESCRIPTION
 
 _See code: [src/commands/auth.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/auth.ts)_
 
-## `bear change-theme [THEME]`
+## `bear change-font FONT`
+
+Change the selected Bear Font.
+
+```
+USAGE
+  $ bear change-font FONT
+
+ARGUMENTS
+  FONT  font name
+
+OPTIONS
+  -h, --help         show CLI help
+  -w, --show-window  force the opening of bear main window
+```
+
+_See code: [src/commands/change-font.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/change-font.ts)_
+
+## `bear change-theme THEME`
 
 Change the selected Bear theme.
 
 ```
 USAGE
-  $ bear change-theme [THEME]
+  $ bear change-theme THEME
 
 ARGUMENTS
   THEME  theme name
@@ -295,18 +314,25 @@ OPTIONS
 
 _See code: [src/commands/open-tag.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/open-tag.ts)_
 
-## `bear rename-tag [FILE]`
+## `bear rename-tag NAME NEW-NAME`
 
-describe the command here
+Rename an existing tag.
 
 ```
 USAGE
-  $ bear rename-tag [FILE]
+  $ bear rename-tag NAME NEW-NAME
+
+ARGUMENTS
+  NAME      tag name
+  NEW-NAME  new tag name
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -h, --help         show CLI help
+  -w, --show-window  force the opening of bear main window
+
+DESCRIPTION
+  This call can't be performed if the app is a locked state.
+  If the tag contains any locked note this call will not be performed.
 ```
 
 _See code: [src/commands/rename-tag.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/rename-tag.ts)_
