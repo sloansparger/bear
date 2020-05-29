@@ -30,11 +30,12 @@ USAGE
 <!-- commands -->
 * [`bear add-file FILE`](#bear-add-file-file)
 * [`bear add-text TEXT`](#bear-add-text-text)
+* [`bear archive [FILE]`](#bear-archive-file)
 * [`bear auth API-TOKEN`](#bear-auth-api-token)
 * [`bear change-font FONT`](#bear-change-font-font)
 * [`bear change-theme THEME`](#bear-change-theme-theme)
 * [`bear create [TEXTFILE]`](#bear-create-textfile)
-* [`bear delete-tag [FILE]`](#bear-delete-tag-file)
+* [`bear delete-tag NAME`](#bear-delete-tag-name)
 * [`bear grab-url URL`](#bear-grab-url-url)
 * [`bear help [COMMAND]`](#bear-help-command)
 * [`bear locked [SEARCH]`](#bear-locked-search)
@@ -126,6 +127,22 @@ DESCRIPTION
 
 _See code: [src/commands/add-text.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/add-text.ts)_
 
+## `bear archive [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ bear archive [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/archive.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/archive.ts)_
+
 ## `bear auth API-TOKEN`
 
 Authenticates Bear CLI commands that require an app generated token to work.
@@ -216,18 +233,24 @@ DESCRIPTION
 
 _See code: [src/commands/create.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/create.ts)_
 
-## `bear delete-tag [FILE]`
+## `bear delete-tag NAME`
 
-describe the command here
+Delete an existing tag.
 
 ```
 USAGE
-  $ bear delete-tag [FILE]
+  $ bear delete-tag NAME
+
+ARGUMENTS
+  NAME  tag name
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -h, --help         show CLI help
+  -w, --show-window  force the opening of bear main window
+
+DESCRIPTION
+  This call can't be performed if the app is a locked state.
+  If the tag contains any locked note this call will not be performed.
 ```
 
 _See code: [src/commands/delete-tag.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/delete-tag.ts)_
