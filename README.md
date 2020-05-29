@@ -30,7 +30,7 @@ USAGE
 <!-- commands -->
 * [`bear auth API-TOKEN`](#bear-auth-api-token)
 * [`bear create [TEXTFILE]`](#bear-create-textfile)
-* [`bear grab-url [FILE]`](#bear-grab-url-file)
+* [`bear grab-url URL`](#bear-grab-url-url)
 * [`bear help [COMMAND]`](#bear-help-command)
 * [`bear locked [SEARCH]`](#bear-locked-search)
 * [`bear open-tag NAME`](#bear-open-tag-name)
@@ -38,6 +38,7 @@ USAGE
 * [`bear tags`](#bear-tags)
 * [`bear today SEARCH`](#bear-today-search)
 * [`bear todo [SEARCH]`](#bear-todo-search)
+* [`bear trash [ID]`](#bear-trash-id)
 * [`bear untagged [SEARCH]`](#bear-untagged-search)
 
 ## `bear auth API-TOKEN`
@@ -91,18 +92,22 @@ DESCRIPTION
 
 _See code: [src/commands/create.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/create.ts)_
 
-## `bear grab-url [FILE]`
+## `bear grab-url URL`
 
-describe the command here
+Create a new note with the content of a web page.
 
 ```
 USAGE
-  $ bear grab-url [FILE]
+  $ bear grab-url URL
+
+ARGUMENTS
+  URL  url to grab
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -h, --help     show CLI help
+  -p, --pin      pin the note to the top of the list
+  -t, --tag=tag  tag for note, if tags are specified in the Bear's web content prefences this parameter is ignored
+  -w, --wait     if false, command returns immediately without waiting for note return value
 ```
 
 _See code: [src/commands/grab-url.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/grab-url.ts)_
@@ -227,6 +232,29 @@ OPTIONS
 ```
 
 _See code: [src/commands/todo.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/todo.ts)_
+
+## `bear trash [ID]`
+
+Move a note to bear trash and select the Trash sidebar item.
+
+```
+USAGE
+  $ bear trash [ID]
+
+ARGUMENTS
+  ID  note unique identifier
+
+OPTIONS
+  -h, --help           show CLI help
+  -s, --search=search  string to search. search term is ignored if an id is provided.
+  -w, --show-window    force the opening of bear main window
+
+DESCRIPTION
+  This call can't be performed if the app is a locked state.
+  Encrypted notes can't be used with this call.
+```
+
+_See code: [src/commands/trash.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/trash.ts)_
 
 ## `bear untagged [SEARCH]`
 
