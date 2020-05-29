@@ -34,9 +34,10 @@ USAGE
 * [`bear locked [SEARCH]`](#bear-locked-search)
 * [`bear open-tag NAME`](#bear-open-tag-name)
 * [`bear search [TERM]`](#bear-search-term)
-* [`bear tags [FILE]`](#bear-tags-file)
+* [`bear tags`](#bear-tags)
 * [`bear today SEARCH`](#bear-today-search)
 * [`bear todo [SEARCH]`](#bear-todo-search)
+* [`bear untagged [FILE]`](#bear-untagged-file)
 
 ## `bear auth API-TOKEN`
 
@@ -160,18 +161,16 @@ OPTIONS
 
 _See code: [src/commands/search.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/search.ts)_
 
-## `bear tags [FILE]`
+## `bear tags`
 
-describe the command here
+Return all the tags currently displayed in Bear's sidebar.
 
 ```
 USAGE
-  $ bear tags [FILE]
+  $ bear tags
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -h, --help  show CLI help
 ```
 
 _See code: [src/commands/tags.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/tags.ts)_
@@ -211,4 +210,20 @@ OPTIONS
 ```
 
 _See code: [src/commands/todo.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/todo.ts)_
+
+## `bear untagged [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ bear untagged [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/untagged.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/untagged.ts)_
 <!-- commandsstop -->

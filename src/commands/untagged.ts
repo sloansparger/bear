@@ -4,8 +4,8 @@ import { bearExec } from "../utils/bear-exec";
 import { logNotes } from "../utils/log";
 import { getToken } from "../utils/config";
 
-export default class Todo extends Command {
-  static description = "Select the Todo sidebar item.";
+export default class Untagged extends Command {
+  static description = "Select the Untagged sidebar item.";
 
   static flags = {
     help: flags.help({ char: "h" }),
@@ -18,13 +18,13 @@ export default class Todo extends Command {
   static args = [{ name: "search", description: "string to search" }];
 
   async run() {
-    const { args, flags } = this.parse(Todo);
+    const { args, flags } = this.parse(Untagged);
     if (args.search === undefined) delete args.search;
     const token = getToken(this.config.configDir);
     const params = { ...flags, ...args, token };
 
     try {
-      const response = await bearExec<NotesResponse>("todo", params);
+      const response = await bearExec<NotesResponse>("untagged", params);
       logNotes(response);
     } catch (error) {
       this.error(error, { exit: 1 });
