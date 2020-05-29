@@ -28,8 +28,9 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`bear add-text [FILE]`](#bear-add-text-file)
+* [`bear add-text TEXT`](#bear-add-text-text)
 * [`bear auth API-TOKEN`](#bear-auth-api-token)
+* [`bear change-theme [FILE]`](#bear-change-theme-file)
 * [`bear create [TEXTFILE]`](#bear-create-textfile)
 * [`bear grab-url URL`](#bear-grab-url-url)
 * [`bear help [COMMAND]`](#bear-help-command)
@@ -43,18 +44,44 @@ USAGE
 * [`bear trash [ID]`](#bear-trash-id)
 * [`bear untagged [SEARCH]`](#bear-untagged-search)
 
-## `bear add-text [FILE]`
+## `bear add-text TEXT`
 
-describe the command here
+Append or prepend text to a note identified by its title or id.
 
 ```
 USAGE
-  $ bear add-text [FILE]
+  $ bear add-text TEXT
+
+ARGUMENTS
+  TEXT  note body
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -c, --edit                                     place the cursor inside the note editor
+  -d, --timestamp                                prepend the current date and time to the text
+  -e, --new-window                               open the note in an external window
+  -h, --help                                     show CLI help
+  -i, --id=id                                    note unique identifier
+
+  -l, --new-line                                 if true and mode is append force the text to appear on a new line
+                                                 inside the note
+
+  -m, --mode=prepend|append|replace|replace_all  the allowed values are prepend, append, replace_all and replace (keep
+                                                 the note's title untouched)
+
+  -o, --open-note                                display the new note in Bear's main or external window
+
+  -s, --header=header                            note title
+
+  -t, --tag=tag                                  tag for note
+
+  -t, --title=title                              note title
+
+  -w, --show-window                              force the opening of bear main window
+
+  -x, --exclude-trashed                          exclude trashed notes
+
+DESCRIPTION
+  Beta encrypted notes can't be accessed with this call.
 ```
 
 _See code: [src/commands/add-text.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/add-text.ts)_
@@ -78,6 +105,22 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/auth.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/auth.ts)_
+
+## `bear change-theme [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ bear change-theme [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/change-theme.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/change-theme.ts)_
 
 ## `bear create [TEXTFILE]`
 
