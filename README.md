@@ -28,13 +28,34 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`bear auth API-TOKEN`](#bear-auth-api-token)
 * [`bear create [TEXTFILE]`](#bear-create-textfile)
 * [`bear help [COMMAND]`](#bear-help-command)
 * [`bear locked [SEARCH]`](#bear-locked-search)
-* [`bear open-tag [NAME]`](#bear-open-tag-name)
+* [`bear open-tag NAME`](#bear-open-tag-name)
 * [`bear search [TERM]`](#bear-search-term)
-* [`bear today [SEARCH]`](#bear-today-search)
+* [`bear today SEARCH`](#bear-today-search)
 * [`bear todo [SEARCH]`](#bear-todo-search)
+
+## `bear auth API-TOKEN`
+
+Authenticates Bear CLI commands that require an app generated token to work.
+
+```
+USAGE
+  $ bear auth API-TOKEN
+
+ARGUMENTS
+  API-TOKEN  application token
+
+OPTIONS
+  -h, --help  show CLI help
+
+DESCRIPTION
+  Go to Bear → Help → API Token → Copy Token and paste into this command.
+```
+
+_See code: [src/commands/auth.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/auth.ts)_
 
 ## `bear create [TEXTFILE]`
 
@@ -60,6 +81,9 @@ OPTIONS
   -p, --pin                pin the note to the top of the list
   -t, --tag=tag            tag for note
   -w, --show-window        force the opening of bear main window
+
+DESCRIPTION
+  Returns note unique identifier.
 ```
 
 _See code: [src/commands/create.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/create.ts)_
@@ -99,20 +123,19 @@ OPTIONS
 
 _See code: [src/commands/locked.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/locked.ts)_
 
-## `bear open-tag [NAME]`
+## `bear open-tag NAME`
 
 Show all the notes which have a selected tag in bear.
 
 ```
 USAGE
-  $ bear open-tag [NAME]
+  $ bear open-tag NAME
 
 ARGUMENTS
   NAME  tag name
 
 OPTIONS
-  -h, --help         show CLI help
-  -x, --token=token  application token
+  -h, --help  show CLI help
 ```
 
 _See code: [src/commands/open-tag.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/open-tag.ts)_
@@ -132,18 +155,17 @@ OPTIONS
   -h, --help         show CLI help
   -t, --tag=tag      tag to search into
   -w, --show-window  force the opening of bear main window
-  -x, --token=token  application token
 ```
 
 _See code: [src/commands/search.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/search.ts)_
 
-## `bear today [SEARCH]`
+## `bear today SEARCH`
 
 Select the Today sidebar item.
 
 ```
 USAGE
-  $ bear today [SEARCH]
+  $ bear today SEARCH
 
 ARGUMENTS
   SEARCH  string to search
@@ -151,7 +173,6 @@ ARGUMENTS
 OPTIONS
   -h, --help         show CLI help
   -w, --show-window  force the opening of bear main window
-  -x, --token=token  application token
 ```
 
 _See code: [src/commands/today.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/today.ts)_
@@ -170,7 +191,6 @@ ARGUMENTS
 OPTIONS
   -h, --help         show CLI help
   -w, --show-window  force the opening of bear main window
-  -x, --token=token  application token
 ```
 
 _See code: [src/commands/todo.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/todo.ts)_

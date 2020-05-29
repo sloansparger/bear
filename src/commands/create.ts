@@ -1,10 +1,16 @@
 import { Command, flags } from "@oclif/command";
-import { execXCallback } from "../utils/x-callback";
+import { bearExec } from "../utils/bear-exec";
+import { Note } from "../types";
 const fs = require("fs");
 const path = require("path");
 
+type CreateSuccess = Pick<Note, "identifier" | "title">;
+
 export default class Create extends Command {
-  static description = "Create a new note. Empty notes are not allowed.";
+  static description = [
+    "Create a new note. Empty notes are not allowed.",
+    "Returns note unique identifier."
+  ].join("\n");
 
   static flags = {
     help: flags.help({ char: "h" }),
@@ -76,6 +82,11 @@ export default class Create extends Command {
       params.text = fs.readFileSync(path.join(process.cwd(), textFile), "utf8");
     }
 
-    execXCallback("create", params);
+    try {
+      const result = await bearExec<CreateSuccess>("create", params);
+      this.log(result.identifier);
+    } catch (error) {
+      this.error(error, { exit: 1 });
+    }
   }
 }

@@ -1,5 +1,8 @@
 import { Command, flags } from "@oclif/command";
-import { execXCallback } from "../utils/x-callback";
+import { NotesResponse } from "../types";
+import { bearExec } from "../utils/bear-exec";
+import { logNotes } from "../utils/log";
+import { getToken } from "../utils/config";
 
 export default class Today extends Command {
   static description = "Select the Today sidebar item.";
@@ -9,16 +12,28 @@ export default class Today extends Command {
     "show-window": flags.boolean({
       char: "w",
       description: "force the opening of bear main window"
-    }),
-    token: flags.string({ char: "x", description: "application token" })
+    })
   };
 
-  static args = [{ name: "search", description: "string to search" }];
+  static args = [
+    {
+      name: "search",
+      description: "string to search",
+      required: true
+    }
+  ];
 
   async run() {
     const { args, flags } = this.parse(Today);
-    const params = { ...flags, ...args };
+    if (args.search === undefined) delete args.search;
+    const token = getToken(this.config.configDir);
+    const params = { ...flags, ...args, token };
 
-    execXCallback("today", params);
+    try {
+      const response = await bearExec<NotesResponse>("today", params);
+      logNotes(response);
+    } catch (error) {
+      this.error(error, { exit: 1 });
+    }
   }
 }

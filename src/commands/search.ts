@@ -1,5 +1,8 @@
 import { Command, flags } from "@oclif/command";
-import { execXCallback } from "../utils/x-callback";
+import { NotesResponse } from "../types";
+import { bearExec } from "../utils/bear-exec";
+import { logNotes } from "../utils/log";
+import { getToken } from "../utils/config";
 
 export default class Search extends Command {
   static description =
@@ -11,16 +14,21 @@ export default class Search extends Command {
       char: "w",
       description: "force the opening of bear main window"
     }),
-    tag: flags.string({ char: "t", description: "tag to search into" }),
-    token: flags.string({ char: "x", description: "application token" })
+    tag: flags.string({ char: "t", description: "tag to search into" })
   };
 
   static args = [{ name: "term", description: "string to search" }];
 
   async run() {
     const { args, flags } = this.parse(Search);
-    const params = { ...flags, ...args };
+    const token = getToken(this.config.configDir);
+    const params = { ...flags, ...args, token };
 
-    execXCallback("search", params);
+    try {
+      const response = await bearExec<NotesResponse>("search", params);
+      logNotes(response);
+    } catch (error) {
+      this.error(error, { exit: 1 });
+    }
   }
 }

@@ -1,5 +1,5 @@
 import { Command, flags } from "@oclif/command";
-import { execXCallback } from "../utils/x-callback";
+import { bearExec } from "../utils/bear-exec";
 
 export default class Locked extends Command {
   static description = "Select the Locked sidebar item.";
@@ -18,6 +18,6 @@ export default class Locked extends Command {
     const { args, flags } = this.parse(Locked);
     const params = { ...flags, ...args };
 
-    execXCallback("locked", params);
+    bearExec("locked", params);
   }
 }

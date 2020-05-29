@@ -3,7 +3,7 @@ import { getConfig, setConfig } from "../utils/config";
 
 export default class Auth extends Command {
   static description = [
-    "Authenticates Bear CLI commands require an app generated token to work",
+    "Authenticates Bear CLI commands that require an app generated token to work.",
     "Go to Bear → Help → API Token → Copy Token and paste into this command."
   ].join("\n");
 

@@ -1,5 +1,8 @@
 import { Command, flags } from "@oclif/command";
-import { execXCallback } from "../utils/x-callback";
+import { NotesResponse } from "../types";
+import { bearExec } from "../utils/bear-exec";
+import { logNotes } from "../utils/log";
+import { getToken } from "../utils/config";
 
 export default class Todo extends Command {
   static description = "Select the Todo sidebar item.";
@@ -9,16 +12,21 @@ export default class Todo extends Command {
     "show-window": flags.boolean({
       char: "w",
       description: "force the opening of bear main window"
-    }),
-    token: flags.string({ char: "x", description: "application token" })
+    })
   };
 
   static args = [{ name: "search", description: "string to search" }];
 
   async run() {
     const { args, flags } = this.parse(Todo);
-    const params = { ...flags, ...args };
+    const token = getToken(this.config.configDir);
+    const params = { ...flags, ...args, token };
 
-    execXCallback("todo", params);
+    try {
+      const response = await bearExec<NotesResponse>("todo", params);
+      logNotes(response);
+    } catch (error) {
+      this.error(error, { exit: 1 });
+    }
   }
 }
