@@ -28,7 +28,7 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`bear add-file [FILE]`](#bear-add-file-file)
+* [`bear add-file FILE`](#bear-add-file-file)
 * [`bear add-text TEXT`](#bear-add-text-text)
 * [`bear auth API-TOKEN`](#bear-auth-api-token)
 * [`bear change-theme [THEME]`](#bear-change-theme-theme)
@@ -38,6 +38,7 @@ USAGE
 * [`bear locked [SEARCH]`](#bear-locked-search)
 * [`bear open-note [ID]`](#bear-open-note-id)
 * [`bear open-tag NAME`](#bear-open-tag-name)
+* [`bear rename-tag [FILE]`](#bear-rename-tag-file)
 * [`bear search [TERM]`](#bear-search-term)
 * [`bear tags`](#bear-tags)
 * [`bear today SEARCH`](#bear-today-search)
@@ -45,18 +46,38 @@ USAGE
 * [`bear trash [ID]`](#bear-trash-id)
 * [`bear untagged [SEARCH]`](#bear-untagged-search)
 
-## `bear add-file [FILE]`
+## `bear add-file FILE`
 
-describe the command here
+Append or prepend a file to a note identified by its title or id.
 
 ```
 USAGE
-  $ bear add-file [FILE]
+  $ bear add-file FILE
+
+ARGUMENTS
+  FILE  path to file you want to add
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -a, --filename=filename                        override file name including extension
+  -c, --edit                                     place the cursor inside the note editor
+  -e, --new-window                               open the note in an external window
+  -h, --help                                     show CLI help
+  -i, --id=id                                    note unique identifier
+
+  -m, --mode=prepend|append|replace|replace_all  [default: append] the allowed values are prepend, append, replace_all
+                                                 and replace (keep the note's title untouched)
+
+  -o, --open-note                                display the new note in Bear's main or external window
+
+  -s, --header=header                            note title
+
+  -t, --title=title                              note title
+
+  -w, --show-window                              force the opening of bear main window
+
+DESCRIPTION
+  This call can't be performed if the app is a locked state.
+  Encrypted notes can't be accessed with this call.
 ```
 
 _See code: [src/commands/add-file.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/add-file.ts)_
@@ -82,8 +103,8 @@ OPTIONS
   -l, --new-line                                 if true and mode is append force the text to appear on a new line
                                                  inside the note
 
-  -m, --mode=prepend|append|replace|replace_all  the allowed values are prepend, append, replace_all and replace (keep
-                                                 the note's title untouched)
+  -m, --mode=prepend|append|replace|replace_all  [default: append] the allowed values are prepend, append, replace_all
+                                                 and replace (keep the note's title untouched)
 
   -o, --open-note                                display the new note in Bear's main or external window
 
@@ -273,6 +294,22 @@ OPTIONS
 ```
 
 _See code: [src/commands/open-tag.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/open-tag.ts)_
+
+## `bear rename-tag [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ bear rename-tag [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/rename-tag.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/rename-tag.ts)_
 
 ## `bear search [TERM]`
 
