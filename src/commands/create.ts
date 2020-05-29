@@ -1,10 +1,9 @@
 import { Command, flags } from "@oclif/command";
 import { bearExec } from "../utils/bear-exec";
-import { Note } from "../types";
+import { NoteId } from "../types";
+import { logNoteId } from "../utils/log";
 const fs = require("fs");
 const path = require("path");
-
-type CreateSuccess = Pick<Note, "identifier" | "title">;
 
 export default class Create extends Command {
   static description = [
@@ -83,8 +82,8 @@ export default class Create extends Command {
     }
 
     try {
-      const result = await bearExec<CreateSuccess>("create", params);
-      this.log(result.identifier);
+      const result = await bearExec<NoteId>("create", params);
+      logNoteId(result);
     } catch (error) {
       this.error(error, { exit: 1 });
     }

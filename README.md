@@ -30,6 +30,7 @@ USAGE
 <!-- commands -->
 * [`bear auth API-TOKEN`](#bear-auth-api-token)
 * [`bear create [TEXTFILE]`](#bear-create-textfile)
+* [`bear grab-url [FILE]`](#bear-grab-url-file)
 * [`bear help [COMMAND]`](#bear-help-command)
 * [`bear locked [SEARCH]`](#bear-locked-search)
 * [`bear open-tag NAME`](#bear-open-tag-name)
@@ -37,7 +38,7 @@ USAGE
 * [`bear tags`](#bear-tags)
 * [`bear today SEARCH`](#bear-today-search)
 * [`bear todo [SEARCH]`](#bear-todo-search)
-* [`bear untagged [FILE]`](#bear-untagged-file)
+* [`bear untagged [SEARCH]`](#bear-untagged-search)
 
 ## `bear auth API-TOKEN`
 
@@ -89,6 +90,22 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/create.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/create.ts)_
+
+## `bear grab-url [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ bear grab-url [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/grab-url.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/grab-url.ts)_
 
 ## `bear help [COMMAND]`
 
@@ -211,18 +228,20 @@ OPTIONS
 
 _See code: [src/commands/todo.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/todo.ts)_
 
-## `bear untagged [FILE]`
+## `bear untagged [SEARCH]`
 
-describe the command here
+Select the Untagged sidebar item.
 
 ```
 USAGE
-  $ bear untagged [FILE]
+  $ bear untagged [SEARCH]
+
+ARGUMENTS
+  SEARCH  string to search
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -h, --help         show CLI help
+  -w, --show-window  force the opening of bear main window
 ```
 
 _See code: [src/commands/untagged.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/untagged.ts)_

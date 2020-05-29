@@ -6,6 +6,8 @@ export interface Note {
   pin: boolean;
 }
 
+export type NoteId = Pick<Note, "identifier" | "title">;
+
 export type Notes = Note[];
 
 export interface NotesResponse {

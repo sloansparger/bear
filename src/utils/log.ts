@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-import { Notes, NotesResponse, Tags, TagsResponse } from "../types";
+import { Notes, NotesResponse, NoteId, Tags, TagsResponse } from "../types";
 
 export function logNotes({ notes }: NotesResponse): void {
   const parsedNotes: Notes = JSON.parse(notes);
@@ -10,6 +10,10 @@ export function logNotes({ notes }: NotesResponse): void {
       `${note.identifier}\t${note.title}\t${note.modificationDate}\t${note.creationDate}\t${note.pin}`
     );
   });
+}
+
+export function logNoteId(noteId: NoteId) {
+  console.log(`${noteId.identifier}\t${noteId.title}`);
 }
 
 export function logTags({ tags }: TagsResponse): void {
