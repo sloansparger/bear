@@ -1,12 +1,15 @@
 import { Command, flags } from "@oclif/command";
+import * as fs from "fs";
+import * as path from "path";
 import { bearExec } from "../utils/bear-exec";
-import { NoteContents } from "../types";
-import { logNoteContents } from "../utils/log";
+import { NoteBody } from "../types";
+import { logNoteBody } from "../utils/log";
 
-export default class AddText extends Command {
+export default class AddFile extends Command {
   static description = [
-    "Append or prepend text to a note identified by its title or id.",
-    "Beta encrypted notes can't be accessed with this call."
+    "Append or prepend a file to a note identified by its title or id.",
+    "This call can't be performed if the app is a locked state.",
+    "Encrypted notes can't be accessed with this call."
   ].join("\n");
 
   static flags = {
@@ -20,21 +23,6 @@ export default class AddText extends Command {
         "the allowed values are prepend, append, replace_all and replace (keep the note's title untouched)",
       options: ["prepend", "append", "replace", "replace_all"],
       default: "append"
-    }),
-    "new-line": flags.boolean({
-      char: "l",
-      description:
-        "if true and mode is append force the text to appear on a new line inside the note",
-      dependsOn: ["mode"]
-    }),
-    tag: flags.string({
-      char: "t",
-      description: "tag for note",
-      multiple: true
-    }),
-    "exclude-trashed": flags.boolean({
-      char: "x",
-      description: "exclude trashed notes"
     }),
     "open-note": flags.boolean({
       char: "o",
@@ -52,21 +40,41 @@ export default class AddText extends Command {
       char: "c",
       description: "place the cursor inside the note editor"
     }),
-    timestamp: flags.boolean({
-      char: "d",
-      description: "prepend the current date and time to the text"
+    filename: flags.string({
+      char: "a",
+      description: "override file name including extension"
     })
   };
 
-  static args = [{ name: "text", description: "note body", required: true }];
+  static args = [
+    {
+      name: "file",
+      description: "path to file you want to add",
+      required: true
+    }
+  ];
 
   async run() {
-    const { args, flags } = this.parse(AddText);
-    const params = { ...args, ...flags };
+    const { args, flags } = this.parse(AddFile);
+    const { file } = args;
+
+    if (!flags.filename) flags.filename = path.basename(file);
+
+    let fileContents;
+    try {
+      fileContents = fs.readFileSync(path.join(process.cwd(), file), "utf8");
+    } catch (error) {
+      this.error("There was an error accessing that file");
+    }
+
+    const params = {
+      ...flags,
+      file: Buffer.from(fileContents).toString("base64")
+    };
 
     try {
-      const response = await bearExec<NoteContents>("add-text", params);
-      logNoteContents(response);
+      const result = await bearExec<NoteBody>("add-file", params);
+      logNoteBody(result);
     } catch (error) {
       this.error(error, { exit: 1 });
     }

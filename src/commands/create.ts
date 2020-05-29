@@ -1,9 +1,9 @@
 import { Command, flags } from "@oclif/command";
+import * as fs from 'fs'
+import * as path from 'path'
 import { bearExec } from "../utils/bear-exec";
 import { NoteId } from "../types";
 import { logNoteId } from "../utils/log";
-const fs = require("fs");
-const path = require("path");
 
 export default class Create extends Command {
   static description = [

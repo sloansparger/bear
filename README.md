@@ -28,9 +28,10 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`bear add-file [FILE]`](#bear-add-file-file)
 * [`bear add-text TEXT`](#bear-add-text-text)
 * [`bear auth API-TOKEN`](#bear-auth-api-token)
-* [`bear change-theme [FILE]`](#bear-change-theme-file)
+* [`bear change-theme [THEME]`](#bear-change-theme-theme)
 * [`bear create [TEXTFILE]`](#bear-create-textfile)
 * [`bear grab-url URL`](#bear-grab-url-url)
 * [`bear help [COMMAND]`](#bear-help-command)
@@ -43,6 +44,22 @@ USAGE
 * [`bear todo [SEARCH]`](#bear-todo-search)
 * [`bear trash [ID]`](#bear-trash-id)
 * [`bear untagged [SEARCH]`](#bear-untagged-search)
+
+## `bear add-file [FILE]`
+
+describe the command here
+
+```
+USAGE
+  $ bear add-file [FILE]
+
+OPTIONS
+  -f, --force
+  -h, --help       show CLI help
+  -n, --name=name  name to print
+```
+
+_See code: [src/commands/add-file.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/add-file.ts)_
 
 ## `bear add-text TEXT`
 
@@ -106,18 +123,23 @@ DESCRIPTION
 
 _See code: [src/commands/auth.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/auth.ts)_
 
-## `bear change-theme [FILE]`
+## `bear change-theme [THEME]`
 
-describe the command here
+Change the selected Bear theme.
 
 ```
 USAGE
-  $ bear change-theme [FILE]
+  $ bear change-theme [THEME]
+
+ARGUMENTS
+  THEME  theme name
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -h, --help         show CLI help
+  -w, --show-window  force the opening of bear main window
+
+DESCRIPTION
+  Some themes may require a Bear Pro subscription.
 ```
 
 _See code: [src/commands/change-theme.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/change-theme.ts)_

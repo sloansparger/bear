@@ -11,6 +11,10 @@ export interface FullNote extends Note {
   is_trashed: boolean;
 }
 
+export interface NoteBody {
+  note: string;
+}
+
 export interface NoteContents {
   title: string;
   note: string;
