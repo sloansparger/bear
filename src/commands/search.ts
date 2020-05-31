@@ -3,17 +3,15 @@ import { NotesResponse } from "../types";
 import { bearExec } from "../utils/bear-exec";
 import { logNotes } from "../utils/log";
 import { getToken } from "../utils/config";
+import cmdFlags from "../utils/flags";
 
 export default class Search extends Command {
   static description =
     "Show search results in Bear for all notes or for a specific tag.";
 
   static flags = {
-    help: flags.help({ char: "h" }),
-    "show-window": flags.boolean({
-      char: "w",
-      description: "force the opening of bear main window"
-    }),
+    help: cmdFlags.help,
+    "show-window": cmdFlags["show-window"],
     tag: flags.string({ char: "t", description: "tag to search into" })
   };
 

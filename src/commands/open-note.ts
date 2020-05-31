@@ -10,7 +10,7 @@ export default class OpenNote extends Command {
 
   static flags = {
     help: flags.help({ char: "h" }),
-    title: flags.string({ char: "t", description: "note title" }),
+    title: flags.string({ char: "n", description: "note title" }),
     header: flags.string({ char: "s", description: "note title" }),
     "exclude-trashed": flags.boolean({
       char: "x",

@@ -1,9 +1,10 @@
-import { Command, flags } from "@oclif/command";
+import { Command } from "@oclif/command";
 import * as fs from "fs";
 import * as path from "path";
 import { bearExec } from "../utils/bear-exec";
 import { NoteBody } from "../types";
 import { logNoteBody } from "../utils/log";
+import cmdFlags from "../utils/flags";
 
 export default class AddFile extends Command {
   static description = [
@@ -13,37 +14,16 @@ export default class AddFile extends Command {
   ].join("\n");
 
   static flags = {
-    help: flags.help({ char: "h" }),
-    id: flags.string({ char: "i", description: "note unique identifier" }),
-    title: flags.string({ char: "t", description: "note title" }),
-    header: flags.string({ char: "s", description: "note title" }),
-    mode: flags.string({
-      char: "m",
-      description:
-        "the allowed values are prepend, append, replace_all and replace (keep the note's title untouched)",
-      options: ["prepend", "append", "replace", "replace_all"],
-      default: "append"
-    }),
-    "open-note": flags.boolean({
-      char: "o",
-      description: "display the new note in Bear's main or external window"
-    }),
-    "new-window": flags.boolean({
-      char: "e",
-      description: "open the note in an external window"
-    }),
-    "show-window": flags.boolean({
-      char: "w",
-      description: "force the opening of bear main window"
-    }),
-    edit: flags.boolean({
-      char: "c",
-      description: "place the cursor inside the note editor"
-    }),
-    filename: flags.string({
-      char: "a",
-      description: "override file name including extension"
-    })
+    edit: cmdFlags.edit,
+    filename: cmdFlags.filename,
+    header: cmdFlags.header,
+    help: cmdFlags.help,
+    id: cmdFlags.id,
+    mode: cmdFlags.mode,
+    "new-window": cmdFlags["new-window"],
+    "open-note": cmdFlags["open-note"],
+    "show-window": cmdFlags["show-window"],
+    title: cmdFlags.title
   };
 
   static args = [

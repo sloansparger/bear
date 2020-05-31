@@ -3,16 +3,14 @@ import { NotesResponse } from "../types";
 import { bearExec } from "../utils/bear-exec";
 import { logNotes } from "../utils/log";
 import { getToken } from "../utils/config";
+import cmdFlags from "../utils/flags";
 
 export default class Todo extends Command {
   static description = "Select the Todo sidebar item.";
 
   static flags = {
-    help: flags.help({ char: "h" }),
-    "show-window": flags.boolean({
-      char: "w",
-      description: "force the opening of bear main window"
-    })
+    help: cmdFlags.help,
+    "show-window": cmdFlags["show-window"]
   };
 
   static args = [{ name: "search", description: "string to search" }];

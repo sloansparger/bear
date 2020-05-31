@@ -1,5 +1,6 @@
-import { Command, flags } from "@oclif/command";
+import { Command } from "@oclif/command";
 import { getConfig, setConfig } from "../utils/config";
+import cmdFlags from "../utils/flags";
 
 export default class Auth extends Command {
   static description = [
@@ -8,7 +9,7 @@ export default class Auth extends Command {
   ].join("\n");
 
   static flags = {
-    help: flags.help({ char: "h" })
+    help: cmdFlags.help
   };
 
   static args = [

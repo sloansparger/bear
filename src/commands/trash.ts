@@ -1,5 +1,6 @@
-import { Command, flags } from "@oclif/command";
+import { Command } from "@oclif/command";
 import { bearExec } from "../utils/bear-exec";
+import cmdFlags from "../utils/flags";
 
 export default class Trash extends Command {
   static description = [
@@ -9,16 +10,9 @@ export default class Trash extends Command {
   ].join("\n");
 
   static flags = {
-    help: flags.help({ char: "h" }),
-    search: flags.string({
-      char: "s",
-      description:
-        "string to search. search term is ignored if an id is provided."
-    }),
-    "show-window": flags.boolean({
-      char: "w",
-      description: "force the opening of bear main window"
-    })
+    help: cmdFlags.help,
+    "show-window": cmdFlags["show-window"],
+    search: cmdFlags.search
   };
 
   static args = [{ name: "id", description: "note unique identifier" }];

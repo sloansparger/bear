@@ -30,10 +30,12 @@ USAGE
 <!-- commands -->
 * [`bear add-file FILE`](#bear-add-file-file)
 * [`bear add-text TEXT`](#bear-add-text-text)
-* [`bear archive [FILE]`](#bear-archive-file)
+* [`bear archive [ID]`](#bear-archive-id)
 * [`bear auth API-TOKEN`](#bear-auth-api-token)
+* [`bear autocomplete [SHELL]`](#bear-autocomplete-shell)
 * [`bear change-font FONT`](#bear-change-font-font)
 * [`bear change-theme THEME`](#bear-change-theme-theme)
+* [`bear commands`](#bear-commands)
 * [`bear create [TEXTFILE]`](#bear-create-textfile)
 * [`bear delete-tag NAME`](#bear-delete-tag-name)
 * [`bear grab-url URL`](#bear-grab-url-url)
@@ -48,6 +50,7 @@ USAGE
 * [`bear todo [SEARCH]`](#bear-todo-search)
 * [`bear trash [ID]`](#bear-trash-id)
 * [`bear untagged [SEARCH]`](#bear-untagged-search)
+* [`bear update [CHANNEL]`](#bear-update-channel)
 
 ## `bear add-file FILE`
 
@@ -61,20 +64,20 @@ ARGUMENTS
   FILE  path to file you want to add
 
 OPTIONS
-  -a, --filename=filename                        override file name including extension
   -c, --edit                                     place the cursor inside the note editor
   -e, --new-window                               open the note in an external window
   -h, --help                                     show CLI help
   -i, --id=id                                    note unique identifier
+  -j, --filename=filename                        override file name including extension
 
   -m, --mode=prepend|append|replace|replace_all  [default: append] the allowed values are prepend, append, replace_all
                                                  and replace (keep the note's title untouched)
 
+  -n, --title=title                              note title
+
   -o, --open-note                                display the new note in Bear's main or external window
 
-  -s, --header=header                            note title
-
-  -t, --title=title                              note title
+  -u, --header=header                            note title
 
   -w, --show-window                              force the opening of bear main window
 
@@ -109,13 +112,13 @@ OPTIONS
   -m, --mode=prepend|append|replace|replace_all  [default: append] the allowed values are prepend, append, replace_all
                                                  and replace (keep the note's title untouched)
 
+  -n, --title=title                              note title
+
   -o, --open-note                                display the new note in Bear's main or external window
 
   -s, --header=header                            note title
 
   -t, --tag=tag                                  tag for note
-
-  -t, --title=title                              note title
 
   -w, --show-window                              force the opening of bear main window
 
@@ -127,18 +130,25 @@ DESCRIPTION
 
 _See code: [src/commands/add-text.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/add-text.ts)_
 
-## `bear archive [FILE]`
+## `bear archive [ID]`
 
-describe the command here
+Move a note to bear archive and select the Archive sidebar item.
 
 ```
 USAGE
-  $ bear archive [FILE]
+  $ bear archive [ID]
+
+ARGUMENTS
+  ID  note unique identifier
 
 OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  -h, --help           show CLI help
+  -s, --search=search  string to search. search term is ignored if an id is provided.
+  -w, --show-window    force the opening of bear main window
+
+DESCRIPTION
+  This call can't be performed if the app is a locked state.
+  Encrypted notes can't be accessed with this call.
 ```
 
 _See code: [src/commands/archive.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/archive.ts)_
@@ -162,6 +172,29 @@ DESCRIPTION
 ```
 
 _See code: [src/commands/auth.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/auth.ts)_
+
+## `bear autocomplete [SHELL]`
+
+display autocomplete installation instructions
+
+```
+USAGE
+  $ bear autocomplete [SHELL]
+
+ARGUMENTS
+  SHELL  shell type
+
+OPTIONS
+  -r, --refresh-cache  Refresh cache (ignores displaying instructions)
+
+EXAMPLES
+  $ bear autocomplete
+  $ bear autocomplete bash
+  $ bear autocomplete zsh
+  $ bear autocomplete --refresh-cache
+```
+
+_See code: [@oclif/plugin-autocomplete](https://github.com/oclif/plugin-autocomplete/blob/v0.2.0/src/commands/autocomplete/index.ts)_
 
 ## `bear change-font FONT`
 
@@ -202,6 +235,22 @@ DESCRIPTION
 
 _See code: [src/commands/change-theme.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/change-theme.ts)_
 
+## `bear commands`
+
+list all the commands
+
+```
+USAGE
+  $ bear commands
+
+OPTIONS
+  -h, --help  show CLI help
+  -j, --json  output in json format
+  --hidden    also show hidden commands
+```
+
+_See code: [@oclif/plugin-commands](https://github.com/oclif/plugin-commands/blob/v1.2.3/src/commands/commands.ts)_
+
 ## `bear create [TEXTFILE]`
 
 Create a new note. Empty notes are not allowed.
@@ -214,13 +263,13 @@ ARGUMENTS
   TEXTFILE  text file containing note body. overrides text flag if provided.
 
 OPTIONS
-  -a, --filename=filename  override file name including extension
+  -a, --file=file          path to a file attachment
   -b, --text=text          note body. overriden if a text file is provided as an argument.
   -c, --edit               place the cursor inside the note editor
   -d, --timestamp          prepend the current date and time to the text
   -e, --new-window         open the note in an external window
-  -f, --file=file          path to a file attachment
   -h, --help               show CLI help
+  -j, --filename=filename  override file name including extension
   -n, --title=title        note title
   -o, --open-note          display the new note in Bear's main or external window
   -p, --pin                pin the note to the top of the list
@@ -270,7 +319,7 @@ OPTIONS
   -h, --help     show CLI help
   -p, --pin      pin the note to the top of the list
   -t, --tag=tag  tag for note, if tags are specified in the Bear's web content prefences this parameter is ignored
-  -w, --wait     if false, command returns immediately without waiting for note return value
+  -z, --wait     if false, command returns immediately without waiting for note return value
 ```
 
 _See code: [src/commands/grab-url.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/grab-url.ts)_
@@ -327,10 +376,10 @@ OPTIONS
   -e, --new-window       open the note in an external window
   -f, --float            makes the external window float on top
   -h, --help             show CLI help
+  -n, --title=title      note title
   -o, --open-note        display the new note in Bear's main or external window
   -p, --pin              pin the note to the top of the list
   -s, --header=header    note title
-  -t, --title=title      note title
   -w, --show-window      force the opening of bear main window
   -x, --exclude-trashed  exclude trashed notes
 ```
@@ -486,4 +535,15 @@ OPTIONS
 ```
 
 _See code: [src/commands/untagged.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/untagged.ts)_
+
+## `bear update [CHANNEL]`
+
+update the bear CLI
+
+```
+USAGE
+  $ bear update [CHANNEL]
+```
+
+_See code: [@oclif/plugin-update](https://github.com/oclif/plugin-update/blob/v1.3.10/src/commands/update.ts)_
 <!-- commandsstop -->

@@ -1,5 +1,6 @@
-import { Command, flags } from "@oclif/command";
+import { Command } from "@oclif/command";
 import { bearExec } from "../utils/bear-exec";
+import cmdFlags from "../utils/flags";
 
 export default class ChangeTheme extends Command {
   static description = [
@@ -8,11 +9,8 @@ export default class ChangeTheme extends Command {
   ].join("\n");
 
   static flags = {
-    help: flags.help({ char: "h" }),
-    "show-window": flags.boolean({
-      char: "w",
-      description: "force the opening of bear main window"
-    })
+    help: cmdFlags.help,
+    "show-window": cmdFlags["show-window"]
   };
 
   static args = [

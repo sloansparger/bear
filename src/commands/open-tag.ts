@@ -1,14 +1,15 @@
-import { Command, flags } from "@oclif/command";
+import { Command } from "@oclif/command";
 import { NotesResponse } from "../types";
 import { bearExec } from "../utils/bear-exec";
 import { logNotes } from "../utils/log";
 import { getToken } from "../utils/config";
+import cmdFlags from "../utils/flags";
 
 export default class OpenTag extends Command {
   static description = "Show all the notes which have a selected tag in bear.";
 
   static flags = {
-    help: flags.help({ char: "h" })
+    help: cmdFlags.help
   };
 
   static args = [{ name: "name", description: "tag name", required: true }];

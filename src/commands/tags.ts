@@ -1,15 +1,16 @@
-import { Command, flags } from "@oclif/command";
+import { Command } from "@oclif/command";
 import { TagsResponse } from "../types";
 import { bearExec } from "../utils/bear-exec";
 import { logTags } from "../utils/log";
 import { getToken } from "../utils/config";
+import cmdFlags from "../utils/flags";
 
 export default class Tags extends Command {
   static description =
     "Return all the tags currently displayed in Bear's sidebar.";
 
   static flags = {
-    help: flags.help({ char: "h" })
+    help: cmdFlags.help
   };
 
   async run() {

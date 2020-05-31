@@ -12,7 +12,7 @@ export default class AddText extends Command {
   static flags = {
     help: flags.help({ char: "h" }),
     id: flags.string({ char: "i", description: "note unique identifier" }),
-    title: flags.string({ char: "t", description: "note title" }),
+    title: flags.string({ char: "n", description: "note title" }),
     header: flags.string({ char: "s", description: "note title" }),
     mode: flags.string({
       char: "m",

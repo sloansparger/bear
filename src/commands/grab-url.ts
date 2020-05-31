@@ -2,27 +2,21 @@ import { Command, flags } from "@oclif/command";
 import { bearExec } from "../utils/bear-exec";
 import { NoteId } from "../types";
 import { logNoteId } from "../utils/log";
+import cmdFlags from "../utils/flags";
 
 export default class GrabUrl extends Command {
   static description = "Create a new note with the content of a web page.";
 
   static flags = {
-    help: flags.help({ char: "h" }),
+    help: cmdFlags.help,
+    pin: cmdFlags.pin,
     tag: flags.string({
       char: "t",
       description:
         "tag for note, if tags are specified in the Bear's web content prefences this parameter is ignored",
       multiple: true
     }),
-    pin: flags.boolean({
-      char: "p",
-      description: "pin the note to the top of the list"
-    }),
-    wait: flags.boolean({
-      char: "w",
-      description:
-        "if false, command returns immediately without waiting for note return value"
-    })
+    wait: cmdFlags.wait
   };
 
   static args = [{ name: "url", description: "url to grab", required: true }];

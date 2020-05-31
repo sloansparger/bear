@@ -1,9 +1,10 @@
 import { Command, flags } from "@oclif/command";
-import * as fs from 'fs'
-import * as path from 'path'
+import * as fs from "fs";
+import * as path from "path";
 import { bearExec } from "../utils/bear-exec";
 import { NoteId } from "../types";
 import { logNoteId } from "../utils/log";
+import cmdFlags from "../utils/flags";
 
 export default class Create extends Command {
   static description = [
@@ -12,47 +13,22 @@ export default class Create extends Command {
   ].join("\n");
 
   static flags = {
-    help: flags.help({ char: "h" }),
-    title: flags.string({ char: "n", description: "note title" }),
-    text: flags.string({
-      char: "b",
-      description:
-        "note body. overriden if a text file is provided as an argument."
-    }),
+    edit: cmdFlags.edit,
+    file: cmdFlags.file,
+    filename: cmdFlags.filename,
+    help: cmdFlags.help,
+    "new-window": cmdFlags["new-window"],
+    "open-note": cmdFlags["open-note"],
+    pin: cmdFlags.pin,
+    "show-window": cmdFlags["show-window"],
     tag: flags.string({
       char: "t",
       description: "tag for note",
       multiple: true
     }),
-    file: flags.string({ char: "f", description: "path to a file attachment" }),
-    filename: flags.string({
-      char: "a",
-      description: "override file name including extension"
-    }),
-    "open-note": flags.boolean({
-      char: "o",
-      description: "display the new note in Bear's main or external window"
-    }),
-    "new-window": flags.boolean({
-      char: "e",
-      description: "open the note in an external window"
-    }),
-    "show-window": flags.boolean({
-      char: "w",
-      description: "force the opening of bear main window"
-    }),
-    pin: flags.boolean({
-      char: "p",
-      description: "pin the note to the top of the list"
-    }),
-    edit: flags.boolean({
-      char: "c",
-      description: "place the cursor inside the note editor"
-    }),
-    timestamp: flags.boolean({
-      char: "d",
-      description: "prepend the current date and time to the text"
-    })
+    text: cmdFlags.text,
+    timestamp: cmdFlags.timestamp,
+    title: cmdFlags.title
   };
 
   static args = [
