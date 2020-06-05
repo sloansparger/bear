@@ -1,5 +1,4 @@
-bear
-====
+# bear
 
 Unofficial CLI for the Bear notes app (MacOS only)
 
@@ -8,12 +7,18 @@ Unofficial CLI for the Bear notes app (MacOS only)
 [![Downloads/week](https://img.shields.io/npm/dw/bear.svg)](https://npmjs.org/package/bear)
 [![License](https://img.shields.io/npm/l/bear.svg)](https://github.com/sloansparger/bear/blob/master/package.json)
 
+![image](https://user-images.githubusercontent.com/7104357/83908223-94c33c80-a71b-11ea-965f-bced9bd346e4.png)
+
 <!-- toc -->
-* [Usage](#usage)
-* [Commands](#commands)
+
+- [Usage](#usage)
+- [Commands](#commands)
 <!-- tocstop -->
+
 # Usage
+
 <!-- usage -->
+
 ```sh-session
 $ npm install -g bear
 $ bear COMMAND
@@ -25,32 +30,36 @@ USAGE
   $ bear COMMAND
 ...
 ```
+
 <!-- usagestop -->
+
 # Commands
+
 <!-- commands -->
-* [`bear add-file FILE`](#bear-add-file-file)
-* [`bear add-text TEXT`](#bear-add-text-text)
-* [`bear archive [ID]`](#bear-archive-id)
-* [`bear auth API-TOKEN`](#bear-auth-api-token)
-* [`bear autocomplete [SHELL]`](#bear-autocomplete-shell)
-* [`bear change-font FONT`](#bear-change-font-font)
-* [`bear change-theme THEME`](#bear-change-theme-theme)
-* [`bear commands`](#bear-commands)
-* [`bear create [TEXTFILE]`](#bear-create-textfile)
-* [`bear delete-tag NAME`](#bear-delete-tag-name)
-* [`bear grab-url URL`](#bear-grab-url-url)
-* [`bear help [COMMAND]`](#bear-help-command)
-* [`bear locked [SEARCH]`](#bear-locked-search)
-* [`bear open-note [ID]`](#bear-open-note-id)
-* [`bear open-tag NAME`](#bear-open-tag-name)
-* [`bear rename-tag NAME NEW-NAME`](#bear-rename-tag-name-new-name)
-* [`bear search [TERM]`](#bear-search-term)
-* [`bear tags`](#bear-tags)
-* [`bear today SEARCH`](#bear-today-search)
-* [`bear todo [SEARCH]`](#bear-todo-search)
-* [`bear trash [ID]`](#bear-trash-id)
-* [`bear untagged [SEARCH]`](#bear-untagged-search)
-* [`bear update [CHANNEL]`](#bear-update-channel)
+
+- [`bear add-file FILE`](#bear-add-file-file)
+- [`bear add-text TEXT`](#bear-add-text-text)
+- [`bear archive [ID]`](#bear-archive-id)
+- [`bear auth API-TOKEN`](#bear-auth-api-token)
+- [`bear autocomplete [SHELL]`](#bear-autocomplete-shell)
+- [`bear change-font FONT`](#bear-change-font-font)
+- [`bear change-theme THEME`](#bear-change-theme-theme)
+- [`bear commands`](#bear-commands)
+- [`bear create [TEXTFILE]`](#bear-create-textfile)
+- [`bear delete-tag NAME`](#bear-delete-tag-name)
+- [`bear grab-url URL`](#bear-grab-url-url)
+- [`bear help [COMMAND]`](#bear-help-command)
+- [`bear locked [SEARCH]`](#bear-locked-search)
+- [`bear open-note [ID]`](#bear-open-note-id)
+- [`bear open-tag NAME`](#bear-open-tag-name)
+- [`bear rename-tag NAME NEW-NAME`](#bear-rename-tag-name-new-name)
+- [`bear search [TERM]`](#bear-search-term)
+- [`bear tags`](#bear-tags)
+- [`bear today SEARCH`](#bear-today-search)
+- [`bear todo [SEARCH]`](#bear-todo-search)
+- [`bear trash [ID]`](#bear-trash-id)
+- [`bear untagged [SEARCH]`](#bear-untagged-search)
+- [`bear update [CHANNEL]`](#bear-update-channel)
 
 ## `bear add-file FILE`
 
@@ -546,4 +555,5 @@ USAGE
 ```
 
 _See code: [@oclif/plugin-update](https://github.com/oclif/plugin-update/blob/v1.3.10/src/commands/update.ts)_
+
 <!-- commandsstop -->
