@@ -1,16 +1,11 @@
-# bear
-
-Unofficial CLI for the Bear notes app (MacOS only)
-
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/bear.svg)](https://npmjs.org/package/bear)
 [![Downloads/week](https://img.shields.io/npm/dw/bear.svg)](https://npmjs.org/package/bear)
 [![License](https://img.shields.io/npm/l/bear.svg)](https://github.com/sloansparger/bear/blob/master/package.json)
 
-![image](https://user-images.githubusercontent.com/7104357/83909151-1cf61180-a71d-11ea-81ab-2a250ed2ef1b.png)
+![](https://user-images.githubusercontent.com/7104357/83909151-1cf61180-a71d-11ea-81ab-2a250ed2ef1b.png)
 
 <!-- toc -->
-
 - [Usage](#usage)
 - [Commands](#commands)
 <!-- tocstop -->
