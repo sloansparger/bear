@@ -7,7 +7,7 @@ Unofficial CLI for the Bear notes app (MacOS only)
 [![Downloads/week](https://img.shields.io/npm/dw/bear.svg)](https://npmjs.org/package/bear)
 [![License](https://img.shields.io/npm/l/bear.svg)](https://github.com/sloansparger/bear/blob/master/package.json)
 
-![image](https://user-images.githubusercontent.com/7104357/83908223-94c33c80-a71b-11ea-965f-bced9bd346e4.png)
+![image](https://user-images.githubusercontent.com/7104357/83909151-1cf61180-a71d-11ea-81ab-2a250ed2ef1b.png)
 
 <!-- toc -->
 
