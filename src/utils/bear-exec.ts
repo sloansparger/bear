@@ -16,19 +16,35 @@ export function bearExec<T>(action: string, rawParams: object): Promise<T> {
     console.log("params:", JSON.stringify(params, null, 2));
   }
 
-  return client.call(action, params).then((response: string) => {
-    if (DEBUG === "true") {
-      console.log("raw response", response);
-    }
+  return new Promise((resolve, reject) => {
+    let hasRejected = false;
 
-    // may need to add conditional here if response is plain text?
-    const parsedResponse = JSON.parse(response);
-    delete parsedResponse[""];
+    const timeoutId = setTimeout(() => {
+      hasRejected = true;
+      reject(new Error("Command timed out."));
+    }, 30 * 1000); // timeout of 30 seconds
 
-    if (DEBUG === "true") {
-      console.log("response", parsedResponse);
-    }
+    client
+      .call(action, params)
+      .then((response: string) => {
+        if (DEBUG === "true") {
+          console.log("raw response", response);
+        }
 
-    return parsedResponse;
+        const parsedResponse = JSON.parse(response);
+        delete parsedResponse[""];
+
+        if (DEBUG === "true") {
+          console.log("response", parsedResponse);
+        }
+
+        if (!hasRejected) {
+          clearTimeout(timeoutId);
+          resolve(parsedResponse);
+        }
+      })
+      .catch(error => {
+        reject(error);
+      });
   });
 }
