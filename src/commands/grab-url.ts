@@ -29,8 +29,10 @@ export default class GrabUrl extends Command {
     if (tag) params.tags = tag.join(",");
 
     try {
-      const result = await bearExec<NoteId>("grab-url", params);
-      logNoteId(result);
+      // result is undefined if --wait flag is not set
+      // if wait is true, we log the note id once it is returned
+      const result = await bearExec<NoteId | undefined>("grab-url", params);
+      if (result !== undefined) logNoteId(result);
     } catch (error) {
       this.error(error, { exit: 1 });
     }
