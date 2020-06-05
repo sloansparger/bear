@@ -2,6 +2,7 @@ import { Command, flags } from "@oclif/command";
 import { bearExec } from "../utils/bear-exec";
 import { NoteContents } from "../types";
 import { logNoteContents } from "../utils/log";
+import cmdFlags from "../utils/flags";
 
 export default class AddText extends Command {
   static description = [
@@ -10,52 +11,23 @@ export default class AddText extends Command {
   ].join("\n");
 
   static flags = {
-    help: flags.help({ char: "h" }),
-    id: flags.string({ char: "i", description: "note unique identifier" }),
-    title: flags.string({ char: "n", description: "note title" }),
-    header: flags.string({ char: "s", description: "note title" }),
-    mode: flags.string({
-      char: "m",
-      description:
-        "the allowed values are prepend, append, replace_all and replace (keep the note's title untouched)",
-      options: ["prepend", "append", "replace", "replace_all"],
-      default: "append"
-    }),
-    "new-line": flags.boolean({
-      char: "l",
-      description:
-        "if true and mode is append force the text to appear on a new line inside the note",
-      dependsOn: ["mode"]
-    }),
+    help: cmdFlags.help,
+    edit: cmdFlags.edit,
+    "exclude-trashed": cmdFlags["exclude-trashed"],
+    header: cmdFlags.header,
+    id: cmdFlags.id,
+    mode: cmdFlags.mode,
+    "new-line": cmdFlags["new-line"],
+    "new-window": cmdFlags["new-window"],
+    "open-note": cmdFlags["open-note"],
+    "show-window": cmdFlags["show-window"],
     tag: flags.string({
       char: "t",
       description: "tag for note",
       multiple: true
     }),
-    "exclude-trashed": flags.boolean({
-      char: "x",
-      description: "exclude trashed notes"
-    }),
-    "open-note": flags.boolean({
-      char: "o",
-      description: "display the new note in Bear's main or external window"
-    }),
-    "new-window": flags.boolean({
-      char: "e",
-      description: "open the note in an external window"
-    }),
-    "show-window": flags.boolean({
-      char: "w",
-      description: "force the opening of bear main window"
-    }),
-    edit: flags.boolean({
-      char: "c",
-      description: "place the cursor inside the note editor"
-    }),
-    timestamp: flags.boolean({
-      char: "d",
-      description: "prepend the current date and time to the text"
-    })
+    timestamp: cmdFlags.timestamp,
+    title: cmdFlags.title
   };
 
   static args = [{ name: "text", description: "note body", required: true }];
