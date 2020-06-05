@@ -22,7 +22,7 @@ export function logNotes({ notes }: NotesResponse): void {
 }
 
 export function logNoteId(noteId: NoteId) {
-  console.log(`${noteId.identifier}\t${noteId.title}`);
+  console.log(noteId.identifier);
 }
 
 export function logNoteBody(noteBody: NoteBody) {
@@ -30,11 +30,12 @@ export function logNoteBody(noteBody: NoteBody) {
 }
 
 export function logFullNote(fullNote: FullNote) {
-  console.log(fullNote);
+  console.log(fullNote.note);
 }
 
 export function logNoteContents(noteContents: NoteContents) {
-  console.log(noteContents);
+  // dont' log note title since it's included in the note
+  console.log(noteContents.note);
 }
 
 export function logTags({ tags }: TagsResponse): void {
