@@ -34,20 +34,20 @@ USAGE
 * [`bear archive [ID]`](#bear-archive-id)
 * [`bear auth API-TOKEN`](#bear-auth-api-token)
 * [`bear autocomplete [SHELL]`](#bear-autocomplete-shell)
-* [`bear change-font FONT`](#bear-change-font-font)
-* [`bear change-theme THEME`](#bear-change-theme-theme)
+* [`bear change-font [FONT]`](#bear-change-font-font)
+* [`bear change-theme [THEME]`](#bear-change-theme-theme)
 * [`bear commands`](#bear-commands)
 * [`bear create [TEXT]`](#bear-create-text)
-* [`bear delete-tag NAME`](#bear-delete-tag-name)
-* [`bear grab-url URL`](#bear-grab-url-url)
+* [`bear delete-tag [NAME]`](#bear-delete-tag-name)
+* [`bear grab-url [URL]`](#bear-grab-url-url)
 * [`bear help [COMMAND]`](#bear-help-command)
 * [`bear locked [SEARCH]`](#bear-locked-search)
 * [`bear open-note [ID]`](#bear-open-note-id)
-* [`bear open-tag NAME`](#bear-open-tag-name)
-* [`bear rename-tag NAME NEW-NAME`](#bear-rename-tag-name-new-name)
+* [`bear open-tag [NAME]`](#bear-open-tag-name)
+* [`bear rename-tag NAME [NEW-NAME]`](#bear-rename-tag-name-new-name)
 * [`bear search [TERM]`](#bear-search-term)
 * [`bear tags`](#bear-tags)
-* [`bear today SEARCH`](#bear-today-search)
+* [`bear today [SEARCH]`](#bear-today-search)
 * [`bear todo [SEARCH]`](#bear-todo-search)
 * [`bear trash [ID]`](#bear-trash-id)
 * [`bear untagged [SEARCH]`](#bear-untagged-search)
@@ -197,13 +197,13 @@ EXAMPLES
 
 _See code: [@oclif/plugin-autocomplete](https://github.com/oclif/plugin-autocomplete/blob/v0.2.0/src/commands/autocomplete/index.ts)_
 
-## `bear change-font FONT`
+## `bear change-font [FONT]`
 
 Change the selected Bear Font.
 
 ```
 USAGE
-  $ bear change-font FONT
+  $ bear change-font [FONT]
 
 ARGUMENTS
   FONT  font name
@@ -215,13 +215,13 @@ OPTIONS
 
 _See code: [src/commands/change-font.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/change-font.ts)_
 
-## `bear change-theme THEME`
+## `bear change-theme [THEME]`
 
 Change the selected Bear theme.
 
 ```
 USAGE
-  $ bear change-theme THEME
+  $ bear change-theme [THEME]
 
 ARGUMENTS
   THEME  theme name
@@ -282,13 +282,13 @@ DESCRIPTION
 
 _See code: [src/commands/create.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/create.ts)_
 
-## `bear delete-tag NAME`
+## `bear delete-tag [NAME]`
 
 Delete an existing tag.
 
 ```
 USAGE
-  $ bear delete-tag NAME
+  $ bear delete-tag [NAME]
 
 ARGUMENTS
   NAME  tag name
@@ -304,13 +304,13 @@ DESCRIPTION
 
 _See code: [src/commands/delete-tag.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/delete-tag.ts)_
 
-## `bear grab-url URL`
+## `bear grab-url [URL]`
 
 Create a new note with the content of a web page.
 
 ```
 USAGE
-  $ bear grab-url URL
+  $ bear grab-url [URL]
 
 ARGUMENTS
   URL  url to grab
@@ -386,13 +386,13 @@ OPTIONS
 
 _See code: [src/commands/open-note.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/open-note.ts)_
 
-## `bear open-tag NAME`
+## `bear open-tag [NAME]`
 
 Show all the notes which have a selected tag in bear.
 
 ```
 USAGE
-  $ bear open-tag NAME
+  $ bear open-tag [NAME]
 
 ARGUMENTS
   NAME  tag name
@@ -403,13 +403,13 @@ OPTIONS
 
 _See code: [src/commands/open-tag.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/open-tag.ts)_
 
-## `bear rename-tag NAME NEW-NAME`
+## `bear rename-tag NAME [NEW-NAME]`
 
 Rename an existing tag.
 
 ```
 USAGE
-  $ bear rename-tag NAME NEW-NAME
+  $ bear rename-tag NAME [NEW-NAME]
 
 ARGUMENTS
   NAME      tag name
@@ -459,13 +459,13 @@ OPTIONS
 
 _See code: [src/commands/tags.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/tags.ts)_
 
-## `bear today SEARCH`
+## `bear today [SEARCH]`
 
 Select the Today sidebar item.
 
 ```
 USAGE
-  $ bear today SEARCH
+  $ bear today [SEARCH]
 
 ARGUMENTS
   SEARCH  string to search
