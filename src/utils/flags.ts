@@ -1,11 +1,10 @@
 import { flags } from "@oclif/command";
 
-// can I convert true/false values into something else via flags?
 // NOTE: chars remaining [g, q, r, v, y]
 
 const boolToYesNo = (isTrue: boolean) => {
-  if (isTrue) return "Yes";
-  return "No";
+  if (isTrue) return "yes";
+  return "no";
 };
 
 const cmdFlags = {

@@ -5,7 +5,12 @@ const { DEBUG } = process.env;
 
 export const client = new XCall("bear");
 
-export function bearExec<T>(action: string, params: object): Promise<T> {
+export function bearExec<T>(action: string, rawParams: object): Promise<T> {
+  const params: any = {};
+  for (const [key, value] of Object.entries(rawParams)) {
+    params[key.replace("-", "_")] = value;
+  }
+
   if (DEBUG === "true") {
     console.log("action:", action);
     console.log("params:", JSON.stringify(params, null, 2));
