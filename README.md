@@ -6,14 +6,13 @@
 ![](https://user-images.githubusercontent.com/7104357/83909151-1cf61180-a71d-11ea-81ab-2a250ed2ef1b.png)
 
 <!-- toc -->
-- [Usage](#usage)
-- [Commands](#commands)
+* [Usage](#usage)
+* [Commands](#commands)
 <!-- tocstop -->
 
 # Usage
 
 <!-- usage -->
-
 ```sh-session
 $ npm install -g bear
 $ bear COMMAND
@@ -25,44 +24,42 @@ USAGE
   $ bear COMMAND
 ...
 ```
-
 <!-- usagestop -->
 
 # Commands
 
 <!-- commands -->
+* [`bear add-file [FILE]`](#bear-add-file-file)
+* [`bear add-text [TEXT]`](#bear-add-text-text)
+* [`bear archive [ID]`](#bear-archive-id)
+* [`bear auth API-TOKEN`](#bear-auth-api-token)
+* [`bear autocomplete [SHELL]`](#bear-autocomplete-shell)
+* [`bear change-font FONT`](#bear-change-font-font)
+* [`bear change-theme THEME`](#bear-change-theme-theme)
+* [`bear commands`](#bear-commands)
+* [`bear create [TEXT]`](#bear-create-text)
+* [`bear delete-tag NAME`](#bear-delete-tag-name)
+* [`bear grab-url URL`](#bear-grab-url-url)
+* [`bear help [COMMAND]`](#bear-help-command)
+* [`bear locked [SEARCH]`](#bear-locked-search)
+* [`bear open-note [ID]`](#bear-open-note-id)
+* [`bear open-tag NAME`](#bear-open-tag-name)
+* [`bear rename-tag NAME NEW-NAME`](#bear-rename-tag-name-new-name)
+* [`bear search [TERM]`](#bear-search-term)
+* [`bear tags`](#bear-tags)
+* [`bear today SEARCH`](#bear-today-search)
+* [`bear todo [SEARCH]`](#bear-todo-search)
+* [`bear trash [ID]`](#bear-trash-id)
+* [`bear untagged [SEARCH]`](#bear-untagged-search)
+* [`bear update [CHANNEL]`](#bear-update-channel)
 
-- [`bear add-file FILE`](#bear-add-file-file)
-- [`bear add-text TEXT`](#bear-add-text-text)
-- [`bear archive [ID]`](#bear-archive-id)
-- [`bear auth API-TOKEN`](#bear-auth-api-token)
-- [`bear autocomplete [SHELL]`](#bear-autocomplete-shell)
-- [`bear change-font FONT`](#bear-change-font-font)
-- [`bear change-theme THEME`](#bear-change-theme-theme)
-- [`bear commands`](#bear-commands)
-- [`bear create [TEXTFILE]`](#bear-create-textfile)
-- [`bear delete-tag NAME`](#bear-delete-tag-name)
-- [`bear grab-url URL`](#bear-grab-url-url)
-- [`bear help [COMMAND]`](#bear-help-command)
-- [`bear locked [SEARCH]`](#bear-locked-search)
-- [`bear open-note [ID]`](#bear-open-note-id)
-- [`bear open-tag NAME`](#bear-open-tag-name)
-- [`bear rename-tag NAME NEW-NAME`](#bear-rename-tag-name-new-name)
-- [`bear search [TERM]`](#bear-search-term)
-- [`bear tags`](#bear-tags)
-- [`bear today SEARCH`](#bear-today-search)
-- [`bear todo [SEARCH]`](#bear-todo-search)
-- [`bear trash [ID]`](#bear-trash-id)
-- [`bear untagged [SEARCH]`](#bear-untagged-search)
-- [`bear update [CHANNEL]`](#bear-update-channel)
-
-## `bear add-file FILE`
+## `bear add-file [FILE]`
 
 Append or prepend a file to a note identified by its title or id.
 
 ```
 USAGE
-  $ bear add-file FILE
+  $ bear add-file [FILE]
 
 ARGUMENTS
   FILE  path to file you want to add
@@ -92,13 +89,13 @@ DESCRIPTION
 
 _See code: [src/commands/add-file.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/add-file.ts)_
 
-## `bear add-text TEXT`
+## `bear add-text [TEXT]`
 
 Append or prepend text to a note identified by its title or id.
 
 ```
 USAGE
-  $ bear add-text TEXT
+  $ bear add-text [TEXT]
 
 ARGUMENTS
   TEXT  note body
@@ -120,9 +117,9 @@ OPTIONS
 
   -o, --open-note                                display the new note in Bear's main or external window
 
-  -s, --header=header                            note title
-
   -t, --tag=tag                                  tag for note
+
+  -u, --header=header                            note title
 
   -w, --show-window                              force the opening of bear main window
 
@@ -255,20 +252,19 @@ OPTIONS
 
 _See code: [@oclif/plugin-commands](https://github.com/oclif/plugin-commands/blob/v1.2.3/src/commands/commands.ts)_
 
-## `bear create [TEXTFILE]`
+## `bear create [TEXT]`
 
 Create a new note. Empty notes are not allowed.
 
 ```
 USAGE
-  $ bear create [TEXTFILE]
+  $ bear create [TEXT]
 
 ARGUMENTS
-  TEXTFILE  text file containing note body. overrides text flag if provided.
+  TEXT  note body
 
 OPTIONS
   -a, --file=file          path to a file attachment
-  -b, --text=text          note body. overriden if a text file is provided as an argument.
   -c, --edit               place the cursor inside the note editor
   -d, --timestamp          prepend the current date and time to the text
   -e, --new-window         open the note in an external window
@@ -376,14 +372,14 @@ ARGUMENTS
 
 OPTIONS
   -c, --edit             place the cursor inside the note editor
-  -c, --selected         return the note currently selected in Bear
   -e, --new-window       open the note in an external window
   -f, --float            makes the external window float on top
   -h, --help             show CLI help
+  -k, --selected         return the note currently selected in Bear
   -n, --title=title      note title
   -o, --open-note        display the new note in Bear's main or external window
   -p, --pin              pin the note to the top of the list
-  -s, --header=header    note title
+  -u, --header=header    note title
   -w, --show-window      force the opening of bear main window
   -x, --exclude-trashed  exclude trashed notes
 ```
@@ -550,5 +546,4 @@ USAGE
 ```
 
 _See code: [@oclif/plugin-update](https://github.com/oclif/plugin-update/blob/v1.3.10/src/commands/update.ts)_
-
 <!-- commandsstop -->

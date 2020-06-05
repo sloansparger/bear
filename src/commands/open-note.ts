@@ -1,10 +1,10 @@
-import { Command, flags } from "@oclif/command";
+import { Command } from "@oclif/command";
 import { FullNote } from "../types";
 import { bearExec } from "../utils/bear-exec";
 import { logFullNote } from "../utils/log";
 import { getToken } from "../utils/config";
-import cmdFlag from "../utils/flags";
 import cmdFlags from "../utils/flags";
+import { argsWithPipe } from "../utils/read-pipe";
 
 export default class OpenNote extends Command {
   static description =
@@ -27,7 +27,8 @@ export default class OpenNote extends Command {
   static args = [{ name: "id", description: "note unique identifier" }];
 
   async run() {
-    const { args, flags } = this.parse(OpenNote);
+    const { args: cmdArgs, flags } = this.parse(OpenNote);
+    const args = await argsWithPipe(OpenNote.args, cmdArgs);
     const token = getToken(this.config.configDir);
     const params = { ...args, ...flags, token };
 

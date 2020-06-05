@@ -13,7 +13,7 @@ export function bearExec<T>(action: string, rawParams: object): Promise<T> {
 
   if (DEBUG === "true") {
     console.log("action:", action);
-    console.log("params:", JSON.stringify(params, null, 2));
+    console.log("params:", params);
   }
 
   return new Promise((resolve, reject) => {

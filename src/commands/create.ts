@@ -5,6 +5,7 @@ import { bearExec } from "../utils/bear-exec";
 import { NoteId } from "../types";
 import { logNoteId } from "../utils/log";
 import cmdFlags from "../utils/flags";
+import { argsWithPipe } from "../utils/read-pipe";
 
 export default class Create extends Command {
   static description = [
@@ -26,35 +27,29 @@ export default class Create extends Command {
       description: "tag for note",
       multiple: true
     }),
-    text: cmdFlags.text,
     timestamp: cmdFlags.timestamp,
     title: cmdFlags.title
   };
 
   static args = [
     {
-      name: "textFile",
-      description:
-        "text file containing note body. overrides text flag if provided."
+      name: "text",
+      description: "note body"
     }
   ];
 
   async run() {
-    const { flags, args } = this.parse(Create);
-    const { tag = [], file, ...rest } = flags;
-    const { textFile } = args;
+    const { flags, args: cmdArgs } = this.parse(Create);
+    const args = await argsWithPipe(Create.args, cmdArgs);
+    const { tag = [], file, ...restFlags } = flags;
 
-    type Params = typeof rest & { file?: string; tags: string };
-    const params: Params = { ...rest, tags: tag.join(",") };
+    type Params = typeof restFlags & { file?: string; tags: string };
+    const params: Params = { ...args, ...restFlags, tags: tag.join(",") };
 
     // bear requires base64 encoding of file attachements
     if (file) {
       const contents = fs.readFileSync(path.join(process.cwd(), file), "utf8");
       params.file = Buffer.from(contents).toString("base64");
-    }
-
-    if (textFile) {
-      params.text = fs.readFileSync(path.join(process.cwd(), textFile), "utf8");
     }
 
     try {

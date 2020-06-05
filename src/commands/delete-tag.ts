@@ -1,6 +1,7 @@
 import { Command } from "@oclif/command";
 import { bearExec } from "../utils/bear-exec";
 import cmdFlags from "../utils/flags";
+import { argsWithPipe } from "../utils/read-pipe";
 
 export default class DeleteTag extends Command {
   static description = [
@@ -14,10 +15,11 @@ export default class DeleteTag extends Command {
     "show-window": cmdFlags["show-window"]
   };
 
-  static args = [{ name: "name", description: "tag name", required: true }];
+  static args = [{ name: "name", description: "tag name" }];
 
   async run() {
-    const { args, flags } = this.parse(DeleteTag);
+    const { args: cmdArgs, flags } = this.parse(DeleteTag);
+    const args = await argsWithPipe(DeleteTag.args, cmdArgs, true);
     const params = { ...flags, ...args };
 
     try {

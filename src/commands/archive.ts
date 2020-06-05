@@ -1,6 +1,7 @@
 import { Command } from "@oclif/command";
 import { bearExec } from "../utils/bear-exec";
 import cmdFlags from "../utils/flags";
+import { argsWithPipe } from "../utils/read-pipe";
 
 export default class Archive extends Command {
   static description = [
@@ -18,7 +19,8 @@ export default class Archive extends Command {
   static args = [{ name: "id", description: "note unique identifier" }];
 
   async run() {
-    const { args, flags } = this.parse(Archive);
+    const { args: cmdArgs, flags } = this.parse(Archive);
+    const args = await argsWithPipe(Archive.args, cmdArgs);
     if (args.id === undefined) delete args.id;
     const params = { ...flags, ...args };
 

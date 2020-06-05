@@ -5,6 +5,7 @@ import { bearExec } from "../utils/bear-exec";
 import { NoteBody } from "../types";
 import { logNoteBody } from "../utils/log";
 import cmdFlags from "../utils/flags";
+import { argsWithPipe } from "../utils/read-pipe";
 
 export default class AddFile extends Command {
   static description = [
@@ -29,13 +30,14 @@ export default class AddFile extends Command {
   static args = [
     {
       name: "file",
-      description: "path to file you want to add",
-      required: true
+      description: "path to file you want to add"
     }
   ];
 
   async run() {
-    const { args, flags } = this.parse(AddFile);
+    const { args: cmdArgs, flags } = this.parse(AddFile);
+    const args = await argsWithPipe(AddFile.args, cmdArgs, true);
+
     const { file } = args;
 
     if (!flags.filename) flags.filename = path.basename(file);

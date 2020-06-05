@@ -1,6 +1,7 @@
 import { Command } from "@oclif/command";
 import { bearExec } from "../utils/bear-exec";
 import cmdFlags from "../utils/flags";
+import { argsWithPipe } from "../utils/read-pipe";
 
 export default class ChangeFont extends Command {
   static description = "Change the selected Bear Font.";
@@ -22,13 +23,13 @@ export default class ChangeFont extends Command {
         "Georgia",
         "Courier",
         "Open Dyslexic"
-      ],
-      required: true
+      ]
     }
   ];
 
   async run() {
-    const { args, flags } = this.parse(ChangeFont);
+    const { args: cmdArgs, flags } = this.parse(ChangeFont);
+    const args = await argsWithPipe(ChangeFont.args, cmdArgs, true);
     const params = { ...flags, ...args };
 
     try {

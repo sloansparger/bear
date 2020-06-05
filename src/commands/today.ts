@@ -4,6 +4,7 @@ import { bearExec } from "../utils/bear-exec";
 import { logNotes } from "../utils/log";
 import { getToken } from "../utils/config";
 import cmdFlags from "../utils/flags";
+import { argsWithPipe } from "../utils/read-pipe";
 
 export default class Today extends Command {
   static description = "Select the Today sidebar item.";
@@ -16,13 +17,13 @@ export default class Today extends Command {
   static args = [
     {
       name: "search",
-      description: "string to search",
-      required: true
+      description: "string to search"
     }
   ];
 
   async run() {
-    const { args, flags } = this.parse(Today);
+    const { args: cmdArgs, flags } = this.parse(Today);
+    const args = await argsWithPipe(Today.args, cmdArgs, true);
     if (args.search === undefined) delete args.search;
     const token = getToken(this.config.configDir);
     const params = { ...flags, ...args, token };

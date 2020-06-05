@@ -4,6 +4,7 @@ import { bearExec } from "../utils/bear-exec";
 import { logNotes } from "../utils/log";
 import { getToken } from "../utils/config";
 import cmdFlags from "../utils/flags";
+import { argsWithPipe } from "../utils/read-pipe";
 
 export default class Search extends Command {
   static description =
@@ -18,7 +19,8 @@ export default class Search extends Command {
   static args = [{ name: "term", description: "string to search" }];
 
   async run() {
-    const { args, flags } = this.parse(Search);
+    const { args: cmdArgs, flags } = this.parse(Search);
+    const args = await argsWithPipe(Search.args, cmdArgs);
     const token = getToken(this.config.configDir);
     const params = { ...flags, ...args, token };
 

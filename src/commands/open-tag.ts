@@ -4,6 +4,7 @@ import { bearExec } from "../utils/bear-exec";
 import { logNotes } from "../utils/log";
 import { getToken } from "../utils/config";
 import cmdFlags from "../utils/flags";
+import { argsWithPipe } from "../utils/read-pipe";
 
 export default class OpenTag extends Command {
   static description = "Show all the notes which have a selected tag in bear.";
@@ -12,10 +13,11 @@ export default class OpenTag extends Command {
     help: cmdFlags.help
   };
 
-  static args = [{ name: "name", description: "tag name", required: true }];
+  static args = [{ name: "name", description: "tag name" }];
 
   async run() {
-    const { args } = this.parse(OpenTag);
+    const { args: cmdArgs } = this.parse(OpenTag);
+    const args = await argsWithPipe(OpenTag.args, cmdArgs, true);
     const token = getToken(this.config.configDir);
     const params = { ...args, token };
 

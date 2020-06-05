@@ -7,7 +7,9 @@
   "repository": "sloansparger/bear",
   "homepage": "https://github.com/sloansparger/bear",
   "bugs": "https://github.com/sloansparger/bear/issues",
-  "keywords": ["bear"],
+  "keywords": [
+    "bear"
+  ],
   "main": "lib/index.js",
   "bin": {
     "bear": "./bin/run"
@@ -15,6 +17,7 @@
   "dependencies": {
     "@oclif/command": "^1.6.1",
     "@oclif/config": "^1.15.1",
+    "@oclif/errors": "^1.2.2",
     "@oclif/plugin-autocomplete": "^0.2.0",
     "@oclif/plugin-commands": "^1.2.3",
     "@oclif/plugin-help": "^3.0.1",
@@ -41,7 +44,12 @@
   "engines": {
     "node": ">=10.0.0"
   },
-  "files": ["/bin", "/lib", "/npm-shrinkwrap.json", "/oclif.manifest.json"],
+  "files": [
+    "/bin",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
   "types": "lib/index.d.ts",
   "oclif": {
     "commands": "./lib/commands",

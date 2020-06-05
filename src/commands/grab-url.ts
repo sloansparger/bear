@@ -3,6 +3,7 @@ import { bearExec } from "../utils/bear-exec";
 import { NoteId } from "../types";
 import { logNoteId } from "../utils/log";
 import cmdFlags from "../utils/flags";
+import { argsWithPipe } from "../utils/read-pipe";
 
 export default class GrabUrl extends Command {
   static description = "Create a new note with the content of a web page.";
@@ -19,10 +20,11 @@ export default class GrabUrl extends Command {
     wait: cmdFlags.wait
   };
 
-  static args = [{ name: "url", description: "url to grab", required: true }];
+  static args = [{ name: "url", description: "url to grab" }];
 
   async run() {
-    const { args, flags } = this.parse(GrabUrl);
+    const { args: cmdArgs, flags } = this.parse(GrabUrl);
+    const args = await argsWithPipe(GrabUrl.args, cmdArgs, true);
     const { tag, ...restFlags } = flags;
 
     const params: any = { ...args, restFlags };

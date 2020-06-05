@@ -3,6 +3,7 @@ import { bearExec } from "../utils/bear-exec";
 import { NoteContents } from "../types";
 import { logNoteContents } from "../utils/log";
 import cmdFlags from "../utils/flags";
+import { argsWithPipe } from "../utils/read-pipe";
 
 export default class AddText extends Command {
   static description = [
@@ -30,10 +31,11 @@ export default class AddText extends Command {
     title: cmdFlags.title
   };
 
-  static args = [{ name: "text", description: "note body", required: true }];
+  static args = [{ name: "text", description: "note body" }];
 
   async run() {
-    const { args, flags } = this.parse(AddText);
+    const { args: cmdArgs, flags } = this.parse(AddText);
+    const args = await argsWithPipe(AddText.args, cmdArgs, true);
     const params = { ...args, ...flags };
 
     try {

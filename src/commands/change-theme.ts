@@ -1,6 +1,7 @@
 import { Command } from "@oclif/command";
 import { bearExec } from "../utils/bear-exec";
 import cmdFlags from "../utils/flags";
+import { argsWithPipe } from "../utils/read-pipe";
 
 export default class ChangeTheme extends Command {
   static description = [
@@ -35,13 +36,13 @@ export default class ChangeTheme extends Command {
         "Solarized Dark",
         "Solarized Light",
         "Toothpaste"
-      ],
-      required: true
+      ]
     }
   ];
 
   async run() {
-    const { args, flags } = this.parse(ChangeTheme);
+    const { args: cmdArgs, flags } = this.parse(ChangeTheme);
+    const args = await argsWithPipe(ChangeTheme.args, cmdArgs, true);
     const params = { ...flags, ...args };
 
     try {

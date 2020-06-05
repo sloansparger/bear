@@ -1,6 +1,7 @@
 import { Command } from "@oclif/command";
 import { bearExec } from "../utils/bear-exec";
 import cmdFlags from "../utils/flags";
+import { argsWithPipe } from "../utils/read-pipe";
 
 export default class Trash extends Command {
   static description = [
@@ -18,7 +19,8 @@ export default class Trash extends Command {
   static args = [{ name: "id", description: "note unique identifier" }];
 
   async run() {
-    const { args, flags } = this.parse(Trash);
+    const { args: cmdArgs, flags } = this.parse(Trash);
+    const args = await argsWithPipe(Trash.args, cmdArgs);
     if (args.id === undefined) delete args.id;
     const params = { ...flags, ...args };
 
