@@ -37,7 +37,6 @@ export default class AddFile extends Command {
   async run() {
     const { args: cmdArgs, flags } = this.parse(AddFile);
     const args = await argsWithPipe(AddFile.args, cmdArgs, true);
-
     const { file } = args;
 
     if (!flags.filename) flags.filename = path.basename(file);

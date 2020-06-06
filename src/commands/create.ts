@@ -48,8 +48,15 @@ export default class Create extends Command {
 
     // bear requires base64 encoding of file attachements
     if (file) {
-      const contents = fs.readFileSync(path.join(process.cwd(), file), "utf8");
-      params.file = Buffer.from(contents).toString("base64");
+      try {
+        const fileContents = fs.readFileSync(
+          path.join(process.cwd(), file),
+          "utf8"
+        );
+        params.file = Buffer.from(fileContents).toString("base64");
+      } catch (error) {
+        this.error("There was an error accessing that file");
+      }
     }
 
     const result = await bearExec<NoteId>("create", params);
