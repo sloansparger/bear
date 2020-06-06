@@ -1,7 +1,7 @@
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/bear.svg)](https://npmjs.org/package/bear)
-[![Downloads/week](https://img.shields.io/npm/dw/bear.svg)](https://npmjs.org/package/bear)
-[![License](https://img.shields.io/npm/l/bear.svg)](https://github.com/sloansparger/bear/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/@sloansparger/bear.svg)](https://npmjs.org/package/@sloansparger/bear)
+[![Downloads/week](https://img.shields.io/npm/dw/@sloansparger/bear.svg)](https://npmjs.org/package/@sloansparger/bear)
+[![License](https://img.shields.io/npm/l/@sloansparger/bear.svg)](https://github.com/sloansparger/@sloansparger/bear/blob/master/package.json)
 
 ![](https://user-images.githubusercontent.com/7104357/83909151-1cf61180-a71d-11ea-81ab-2a250ed2ef1b.png)
 
@@ -14,11 +14,11 @@
 
 <!-- usage -->
 ```sh-session
-$ npm install -g bear
+$ npm install -g @sloansparger/bear
 $ bear COMMAND
 running command...
 $ bear (-v|--version|version)
-bear/0.0.0 darwin-x64 node-v12.16.1
+@sloansparger/bear/0.0.0 darwin-x64 node-v12.16.1
 $ bear --help [COMMAND]
 USAGE
   $ bear COMMAND
@@ -85,6 +85,7 @@ OPTIONS
 DESCRIPTION
   This call can't be performed if the app is a locked state.
   Encrypted notes can't be accessed with this call.
+  Returns note's contents.
 ```
 
 _See code: [src/commands/add-file.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/add-file.ts)_
@@ -127,6 +128,7 @@ OPTIONS
 
 DESCRIPTION
   Beta encrypted notes can't be accessed with this call.
+  Returns note's contents.
 ```
 
 _See code: [src/commands/add-text.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/add-text.ts)_
@@ -277,7 +279,7 @@ OPTIONS
   -w, --show-window        force the opening of bear main window
 
 DESCRIPTION
-  Returns note unique identifier.
+  Returns unique note identifier of new note.
 ```
 
 _See code: [src/commands/create.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/create.ts)_
@@ -320,6 +322,9 @@ OPTIONS
   -p, --pin      pin the note to the top of the list
   -t, --tag=tag  tag for note, if tags are specified in the Bear's web content prefences this parameter is ignored
   -z, --wait     if false, command returns immediately without waiting for note return value
+
+DESCRIPTION
+  Returns unique note identifier of new note.
 ```
 
 _See code: [src/commands/grab-url.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/grab-url.ts)_
@@ -361,7 +366,7 @@ _See code: [src/commands/locked.ts](https://github.com/sloansparger/bear/blob/v0
 
 ## `bear open-note [ID]`
 
-Open a note identified by its title or id and return its content.
+Fetch a note identified by its title or id.
 
 ```
 USAGE
@@ -382,13 +387,16 @@ OPTIONS
   -u, --header=header    note title
   -w, --show-window      force the opening of bear main window
   -x, --exclude-trashed  exclude trashed notes
+
+DESCRIPTION
+  Returns the matched note's contents.
 ```
 
 _See code: [src/commands/open-note.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/open-note.ts)_
 
 ## `bear open-tag [NAME]`
 
-Show all the notes which have a selected tag in bear.
+Fetch all the notes which have a selected tag in bear.
 
 ```
 USAGE
@@ -399,6 +407,9 @@ ARGUMENTS
 
 OPTIONS
   -h, --help  show CLI help
+
+DESCRIPTION
+  Returns list of unique note identifiers and note titles.
 ```
 
 _See code: [src/commands/open-tag.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/open-tag.ts)_
@@ -428,7 +439,7 @@ _See code: [src/commands/rename-tag.ts](https://github.com/sloansparger/bear/blo
 
 ## `bear search [TERM]`
 
-Show search results in Bear for all notes or for a specific tag.
+Fetch search results from Bear for all notes or for a specific tag.
 
 ```
 USAGE
@@ -441,13 +452,16 @@ OPTIONS
   -h, --help         show CLI help
   -t, --tag=tag      tag to search into
   -w, --show-window  force the opening of bear main window
+
+DESCRIPTION
+  Returns list of unique note identifiers and note titles.
 ```
 
 _See code: [src/commands/search.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/search.ts)_
 
 ## `bear tags`
 
-Return all the tags currently displayed in Bear's sidebar.
+Fetch all the tags currently displayed in Bear's sidebar.
 
 ```
 USAGE
@@ -455,13 +469,16 @@ USAGE
 
 OPTIONS
   -h, --help  show CLI help
+
+DESCRIPTION
+  Returns list of tag names.
 ```
 
 _See code: [src/commands/tags.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/tags.ts)_
 
 ## `bear today [SEARCH]`
 
-Select the Today sidebar item.
+Fetch all notes in the Today sidebar item.
 
 ```
 USAGE
@@ -473,13 +490,19 @@ ARGUMENTS
 OPTIONS
   -h, --help         show CLI help
   -w, --show-window  force the opening of bear main window
+
+DESCRIPTION
+  Returns list of unique note identifiers and note titles.
+  NOTE: this feature doesn't currently work as expected.
+  BUG: There's an issue with bear that causes notes that match search not in Today to be returned.
+  BUG: There's an issue where fetching Today's notes causes bear to hold process open.
 ```
 
 _See code: [src/commands/today.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/today.ts)_
 
 ## `bear todo [SEARCH]`
 
-Select the Todo sidebar item.
+Fetch all notes in the Todo sidebar item.
 
 ```
 USAGE
@@ -491,6 +514,10 @@ ARGUMENTS
 OPTIONS
   -h, --help         show CLI help
   -w, --show-window  force the opening of bear main window
+
+DESCRIPTION
+  Returns list of unique note identifiers and note titles.
+  BUG: There's an issue with bear that causes notes that match search with no Todo's to be returned.
 ```
 
 _See code: [src/commands/todo.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/todo.ts)_
@@ -520,7 +547,7 @@ _See code: [src/commands/trash.ts](https://github.com/sloansparger/bear/blob/v0.
 
 ## `bear untagged [SEARCH]`
 
-Select the Untagged sidebar item.
+Fetch all notes in the Untagged sidebar item.
 
 ```
 USAGE
@@ -532,6 +559,9 @@ ARGUMENTS
 OPTIONS
   -h, --help         show CLI help
   -w, --show-window  force the opening of bear main window
+
+DESCRIPTION
+  Returns list of unique note identifiers and note titles.
 ```
 
 _See code: [src/commands/untagged.ts](https://github.com/sloansparger/bear/blob/v0.0.0/src/commands/untagged.ts)_

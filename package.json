@@ -1,5 +1,5 @@
 {
-  "name": "bear",
+  "name": "@sloansparger/bear",
   "description": "Unofficial CLI for the Bear notes app (MacOS only)",
   "version": "0.0.0",
   "author": "Sloan Sparger @sloansparger",
@@ -7,9 +7,7 @@
   "repository": "sloansparger/bear",
   "homepage": "https://github.com/sloansparger/bear",
   "bugs": "https://github.com/sloansparger/bear/issues",
-  "keywords": [
-    "bear"
-  ],
+  "keywords": ["bear", "cli"],
   "main": "lib/index.js",
   "bin": {
     "bear": "./bin/run"
@@ -44,12 +42,7 @@
   "engines": {
     "node": ">=10.0.0"
   },
-  "files": [
-    "/bin",
-    "/lib",
-    "/npm-shrinkwrap.json",
-    "/oclif.manifest.json"
-  ],
+  "files": ["/bin", "/lib", "/npm-shrinkwrap.json", "/oclif.manifest.json"],
   "types": "lib/index.d.ts",
   "oclif": {
     "commands": "./lib/commands",
