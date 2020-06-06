@@ -7,8 +7,10 @@ import cmdFlags from "../utils/flags";
 import { argsWithPipe } from "../utils/read-pipe";
 
 export default class OpenNote extends Command {
-  static description =
-    "Open a note identified by its title or id and return its content.";
+  static description = [
+    "Fetch a note identified by its title or id.",
+    "Returns the matched note's contents."
+  ].join("\n");
 
   static flags = {
     help: cmdFlags.help,

@@ -11,7 +11,8 @@ export default class AddFile extends Command {
   static description = [
     "Append or prepend a file to a note identified by its title or id.",
     "This call can't be performed if the app is a locked state.",
-    "Encrypted notes can't be accessed with this call."
+    "Encrypted notes can't be accessed with this call.",
+    "Returns note's contents."
   ].join("\n");
 
   static flags = {

@@ -7,7 +7,10 @@ import cmdFlags from "../utils/flags";
 import { argsWithPipe } from "../utils/read-pipe";
 
 export default class Today extends Command {
-  static description = "Select the Today sidebar item.";
+  static description = [
+    "Fetch all notes in the Today sidebar item.",
+    "Returns list of unique note identifiers and note titles."
+  ].join("\n");
 
   static flags = {
     help: cmdFlags.help,

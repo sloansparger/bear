@@ -8,7 +8,8 @@ import { argsWithPipe } from "../utils/read-pipe";
 export default class AddText extends Command {
   static description = [
     "Append or prepend text to a note identified by its title or id.",
-    "Beta encrypted notes can't be accessed with this call."
+    "Beta encrypted notes can't be accessed with this call.",
+    "Returns note's contents."
   ].join("\n");
 
   static flags = {

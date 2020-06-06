@@ -15,9 +15,7 @@ export function logNotes({ notes }: NotesResponse): void {
   const parsedNotes: Notes = JSON.parse(notes);
 
   parsedNotes.forEach(note => {
-    console.log(
-      `${note.identifier}\t${note.title}\t${note.modificationDate}\t${note.creationDate}\t${note.pin}`
-    );
+    console.log(`${note.identifier}\t${note.title}`);
   });
 }
 

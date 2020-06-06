@@ -7,7 +7,10 @@ import cmdFlags from "../utils/flags";
 import { argsWithPipe } from "../utils/read-pipe";
 
 export default class Todo extends Command {
-  static description = "Select the Todo sidebar item.";
+  static description = [
+    "Fetch all notes in the Todo sidebar item.",
+    "Returns list of unique note identifiers and note titles."
+  ].join("\n");
 
   static flags = {
     help: cmdFlags.help,

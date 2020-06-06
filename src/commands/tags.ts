@@ -6,8 +6,10 @@ import { getToken } from "../utils/config";
 import cmdFlags from "../utils/flags";
 
 export default class Tags extends Command {
-  static description =
-    "Return all the tags currently displayed in Bear's sidebar.";
+  static description = [
+    "Fetch all the tags currently displayed in Bear's sidebar.",
+    "Returns list of tag names."
+  ].join("\n");
 
   static flags = {
     help: cmdFlags.help

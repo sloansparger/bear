@@ -7,7 +7,10 @@ import cmdFlags from "../utils/flags";
 import { argsWithPipe } from "../utils/read-pipe";
 
 export default class OpenTag extends Command {
-  static description = "Show all the notes which have a selected tag in bear.";
+  static description = [
+    "Fetch all the notes which have a selected tag in bear.",
+    "Returns list of unique note identifiers and note titles."
+  ].join("\n");
 
   static flags = {
     help: cmdFlags.help

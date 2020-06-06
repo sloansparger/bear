@@ -10,7 +10,7 @@ import { argsWithPipe } from "../utils/read-pipe";
 export default class Create extends Command {
   static description = [
     "Create a new note. Empty notes are not allowed.",
-    "Returns note unique identifier."
+    "Returns unique note identifier of new note."
   ].join("\n");
 
   static flags = {

@@ -7,8 +7,10 @@ import cmdFlags from "../utils/flags";
 import { argsWithPipe } from "../utils/read-pipe";
 
 export default class Search extends Command {
-  static description =
-    "Show search results in Bear for all notes or for a specific tag.";
+  static description = [
+    "Fetch search results from Bear for all notes or for a specific tag.",
+    "Returns list of unique note identifiers and note titles."
+  ].join("\n");
 
   static flags = {
     help: cmdFlags.help,

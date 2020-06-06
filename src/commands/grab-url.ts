@@ -6,7 +6,10 @@ import cmdFlags from "../utils/flags";
 import { argsWithPipe } from "../utils/read-pipe";
 
 export default class GrabUrl extends Command {
-  static description = "Create a new note with the content of a web page.";
+  static description = [
+    "Create a new note with the content of a web page.",
+    "Returns unique note identifier of new note."
+  ].join("\n");
 
   static flags = {
     help: cmdFlags.help,
