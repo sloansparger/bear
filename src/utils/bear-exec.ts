@@ -36,9 +36,11 @@ export function bearExec<T>(action: string, rawParams: object): Promise<T> {
           console.log("response", parsedResponse);
         }
 
+        if (timeoutId) clearTimeout(timeoutId);
         resolve(parsedResponse);
       })
       .catch(error => {
+        if (timeoutId) clearTimeout(timeoutId);
         const [, ...errLines] = error.message.split("\n");
         const parsedError = JSON.parse(errLines.join("\n"));
         if (parsedError.errorMessage) {
@@ -46,9 +48,6 @@ export function bearExec<T>(action: string, rawParams: object): Promise<T> {
         } else {
           reject(new CLIError(error));
         }
-      })
-      .finally(() => {
-        if (timeoutId) clearTimeout(timeoutId);
       });
   });
 }

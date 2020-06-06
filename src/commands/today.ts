@@ -9,7 +9,10 @@ import { argsWithPipe } from "../utils/read-pipe";
 export default class Today extends Command {
   static description = [
     "Fetch all notes in the Today sidebar item.",
-    "Returns list of unique note identifiers and note titles."
+    "Returns list of unique note identifiers and note titles.",
+    "NOTE: this feature doesn't currently work as expected.",
+    "BUG: There's an issue with bear that causes notes that match search not in Today to be returned.",
+    "BUG: There's an issue where fetching Today's notes causes bear to hold process open."
   ].join("\n");
 
   static flags = {
@@ -26,7 +29,7 @@ export default class Today extends Command {
 
   async run() {
     const { args: cmdArgs, flags } = this.parse(Today);
-    const args = await argsWithPipe(Today.args, cmdArgs, true);
+    const args = await argsWithPipe(Today.args, cmdArgs);
     if (args.search === undefined) delete args.search;
     const token = getToken(this.config.configDir);
     const params = { ...flags, ...args, token };

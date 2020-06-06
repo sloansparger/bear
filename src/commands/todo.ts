@@ -9,7 +9,8 @@ import { argsWithPipe } from "../utils/read-pipe";
 export default class Todo extends Command {
   static description = [
     "Fetch all notes in the Todo sidebar item.",
-    "Returns list of unique note identifiers and note titles."
+    "Returns list of unique note identifiers and note titles.",
+    "BUG: There's an issue with bear that causes notes that match search with no Todo's to be returned."
   ].join("\n");
 
   static flags = {
