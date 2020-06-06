@@ -32,17 +32,7 @@ export default class OpenNote extends Command {
     const token = getToken(this.config.configDir);
     const params = { ...args, ...flags, token };
 
-    try {
-      const response = await bearExec<FullNote>("open-note", params);
-      logFullNote(response);
-    } catch (error) {
-      if (
-        error.string &&
-        error.string.includes("The note could not be found")
-      ) {
-        this.error("The note could not be found", { exit: 1 });
-      }
-      this.error(error, { exit: 1 });
-    }
+    const response = await bearExec<FullNote>("open-note", params);
+    logFullNote(response);
   }
 }

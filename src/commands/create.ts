@@ -52,11 +52,7 @@ export default class Create extends Command {
       params.file = Buffer.from(contents).toString("base64");
     }
 
-    try {
-      const result = await bearExec<NoteId>("create", params);
-      logNoteId(result);
-    } catch (error) {
-      this.error(error, { exit: 1 });
-    }
+    const result = await bearExec<NoteId>("create", params);
+    logNoteId(result);
   }
 }

@@ -54,11 +54,7 @@ export default class AddFile extends Command {
       file: Buffer.from(fileContents).toString("base64")
     };
 
-    try {
-      const result = await bearExec<NoteBody>("add-file", params);
-      logNoteBody(result);
-    } catch (error) {
-      this.error(error, { exit: 1 });
-    }
+    const result = await bearExec<NoteBody>("add-file", params);
+    logNoteBody(result);
   }
 }

@@ -24,10 +24,6 @@ export default class Trash extends Command {
     if (args.id === undefined) delete args.id;
     const params = { ...flags, ...args };
 
-    try {
-      await bearExec("trash", params);
-    } catch (error) {
-      this.error(error, { exit: 1 });
-    }
+    await bearExec("trash", params);
   }
 }

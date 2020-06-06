@@ -38,11 +38,7 @@ export default class AddText extends Command {
     const args = await argsWithPipe(AddText.args, cmdArgs, true);
     const params = { ...args, ...flags };
 
-    try {
-      const response = await bearExec<NoteContents>("add-text", params);
-      logNoteContents(response);
-    } catch (error) {
-      this.error(error, { exit: 1 });
-    }
+    const response = await bearExec<NoteContents>("add-text", params);
+    logNoteContents(response);
   }
 }

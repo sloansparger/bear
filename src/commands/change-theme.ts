@@ -45,10 +45,6 @@ export default class ChangeTheme extends Command {
     const args = await argsWithPipe(ChangeTheme.args, cmdArgs, true);
     const params = { ...flags, ...args };
 
-    try {
-      await bearExec("change-theme", params);
-    } catch (error) {
-      this.error(error, { exit: 1 });
-    }
+    await bearExec("change-theme", params);
   }
 }

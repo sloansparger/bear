@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 
+import { CLIError } from "@oclif/errors";
 import XCall from "./xcall";
 const { DEBUG } = process.env;
 
@@ -17,11 +18,8 @@ export function bearExec<T>(action: string, rawParams: object): Promise<T> {
   }
 
   return new Promise((resolve, reject) => {
-    let hasRejected = false;
-
     const timeoutId = setTimeout(() => {
-      hasRejected = true;
-      reject(new Error("Command timed out."));
+      throw new CLIError("Command timed out.");
     }, 30 * 1000); // timeout of 30 seconds
 
     client
@@ -38,13 +36,19 @@ export function bearExec<T>(action: string, rawParams: object): Promise<T> {
           console.log("response", parsedResponse);
         }
 
-        if (!hasRejected) {
-          clearTimeout(timeoutId);
-          resolve(parsedResponse);
-        }
+        resolve(parsedResponse);
       })
       .catch(error => {
-        reject(error);
+        const [, ...errLines] = error.message.split("\n");
+        const parsedError = JSON.parse(errLines.join("\n"));
+        if (parsedError.errorMessage) {
+          reject(new CLIError(parsedError.errorMessage));
+        } else {
+          reject(new CLIError(error));
+        }
+      })
+      .finally(() => {
+        if (timeoutId) clearTimeout(timeoutId);
       });
   });
 }

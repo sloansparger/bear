@@ -22,10 +22,6 @@ export default class DeleteTag extends Command {
     const args = await argsWithPipe(DeleteTag.args, cmdArgs, true);
     const params = { ...flags, ...args };
 
-    try {
-      await bearExec("delete-tag", params);
-    } catch (error) {
-      this.error(error, { exit: 1 });
-    }
+    await bearExec("delete-tag", params);
   }
 }

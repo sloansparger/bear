@@ -14,12 +14,8 @@ export default class Tags extends Command {
   };
 
   async run() {
-    try {
-      const token = getToken(this.config.configDir);
-      const response = await bearExec<TagsResponse>("tags", { token });
-      logTags(response);
-    } catch (error) {
-      this.error(error, { exit: 1 });
-    }
+    const token = getToken(this.config.configDir);
+    const response = await bearExec<TagsResponse>("tags", { token });
+    logTags(response);
   }
 }

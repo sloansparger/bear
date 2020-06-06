@@ -32,10 +32,6 @@ export default class ChangeFont extends Command {
     const args = await argsWithPipe(ChangeFont.args, cmdArgs, true);
     const params = { ...flags, ...args };
 
-    try {
-      await bearExec("change-font", params);
-    } catch (error) {
-      this.error(error, { exit: 1 });
-    }
+    await bearExec("change-font", params);
   }
 }

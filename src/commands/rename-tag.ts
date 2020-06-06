@@ -25,10 +25,6 @@ export default class RenameTag extends Command {
     const args = await argsWithPipe(RenameTag.args, cmdArgs, true);
     const params = { ...flags, name: args.name, new_name: args["new-name"] };
 
-    try {
-      await bearExec("rename-tag", params);
-    } catch (error) {
-      this.error(error, { exit: 1 });
-    }
+    await bearExec("rename-tag", params);
   }
 }

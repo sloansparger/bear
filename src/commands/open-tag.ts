@@ -21,14 +21,7 @@ export default class OpenTag extends Command {
     const token = getToken(this.config.configDir);
     const params = { ...args, token };
 
-    try {
-      const response = await bearExec<NotesResponse>("open-tag", params);
-      logNotes(response);
-    } catch (error) {
-      if (error.string && error.string.includes("The tag could not be found")) {
-        this.error("The tag could not be found", { exit: 1 });
-      }
-      this.error(error, { exit: 1 });
-    }
+    const response = await bearExec<NotesResponse>("open-tag", params);
+    logNotes(response);
   }
 }

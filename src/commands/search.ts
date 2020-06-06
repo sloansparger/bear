@@ -24,11 +24,7 @@ export default class Search extends Command {
     const token = getToken(this.config.configDir);
     const params = { ...flags, ...args, token };
 
-    try {
-      const response = await bearExec<NotesResponse>("search", params);
-      logNotes(response);
-    } catch (error) {
-      this.error(error, { exit: 1 });
-    }
+    const response = await bearExec<NotesResponse>("search", params);
+    logNotes(response);
   }
 }

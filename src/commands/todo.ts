@@ -23,11 +23,7 @@ export default class Todo extends Command {
     const token = getToken(this.config.configDir);
     const params = { ...flags, ...args, token };
 
-    try {
-      const response = await bearExec<NotesResponse>("todo", params);
-      logNotes(response);
-    } catch (error) {
-      this.error(error, { exit: 1 });
-    }
+    const response = await bearExec<NotesResponse>("todo", params);
+    logNotes(response);
   }
 }
