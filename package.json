@@ -1,7 +1,7 @@
 {
   "name": "@sloansparger/bear",
   "description": "Unofficial CLI for the Bear notes app (MacOS only)",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Sloan Sparger @sloansparger",
   "license": "MIT",
   "repository": "sloansparger/bear",
