@@ -42,7 +42,20 @@ export function bearExec<T>(action: string, rawParams: object): Promise<T> {
       .catch(error => {
         if (timeoutId) clearTimeout(timeoutId);
         const [, ...errLines] = error.message.split("\n");
-        const parsedError = JSON.parse(errLines.join("\n"));
+        if (DEBUG === "true") {
+          console.log("raw error:", error);
+          console.log("err obj?:", errLines);
+        }
+
+        let parsedError;
+        try {
+          parsedError = JSON.parse(errLines.join("\n"));
+        } catch (err) {
+          return reject(
+            new CLIError("Unexpected response received from Bear.")
+          );
+        }
+
         if (parsedError.errorMessage) {
           reject(new CLIError(parsedError.errorMessage));
         } else {
