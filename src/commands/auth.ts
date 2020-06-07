@@ -1,5 +1,5 @@
 import { Command } from "@oclif/command";
-import { getConfig, setConfig } from "../utils/config";
+import config from "../utils/config";
 import cmdFlags from "../utils/flags";
 
 export default class Auth extends Command {
@@ -19,11 +19,7 @@ export default class Auth extends Command {
   async run() {
     try {
       const { args } = this.parse(Auth);
-      const { configDir } = this.config;
-
-      const config = getConfig(configDir);
-      setConfig(configDir, { ...config, token: args["api-token"] });
-
+      config.set("token", args["api-token"]);
       this.log("Successfully saved API Token");
     } catch (error) {
       this.error("There was an error saving your API Token.", { exit: 1 });

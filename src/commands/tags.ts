@@ -2,7 +2,6 @@ import { Command } from "@oclif/command";
 import { TagsResponse } from "../types";
 import { bearExec } from "../utils/bear-exec";
 import { logTags } from "../utils/log";
-import { getToken } from "../utils/config";
 import cmdFlags from "../utils/flags";
 
 export default class Tags extends Command {
@@ -12,12 +11,13 @@ export default class Tags extends Command {
   ].join("\n");
 
   static flags = {
-    help: cmdFlags.help
+    help: cmdFlags.help,
+    token: cmdFlags.tokenRequired
   };
 
   async run() {
-    const token = getToken(this.config.configDir);
-    const response = await bearExec<TagsResponse>("tags", { token });
+    const { flags } = this.parse(Tags);
+    const response = await bearExec<TagsResponse>("tags", { ...flags });
     logTags(response);
   }
 }

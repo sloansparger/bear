@@ -1,4 +1,5 @@
 import { flags } from "@oclif/command";
+import config from "./config";
 
 // NOTE: chars remaining [g, q, r, v, y]
 
@@ -69,7 +70,8 @@ const cmdFlags = {
   selected: flags.boolean({
     char: "k",
     description: "return the note currently selected in Bear",
-    parse: boolToYesNo
+    parse: boolToYesNo,
+    dependsOn: ["token"]
   }),
   "show-window": flags.boolean({
     char: "w",
@@ -82,6 +84,19 @@ const cmdFlags = {
     parse: boolToYesNo
   }),
   title: flags.string({ char: "n", description: "note title" }),
+  token: flags.string({
+    char: "y",
+    description:
+      "bear api token. defaults to api key provided to auth command.",
+    default: config.get("token", undefined) as string | undefined
+  }),
+  tokenRequired: flags.string({
+    char: "y",
+    description:
+      "bear api token. defaults to api key provided to auth command.",
+    default: config.get("token", undefined) as string | undefined,
+    required: true
+  }),
   wait: flags.boolean({
     char: "z",
     description:

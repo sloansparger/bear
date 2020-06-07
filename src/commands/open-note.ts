@@ -2,7 +2,6 @@ import { Command } from "@oclif/command";
 import { FullNote } from "../types";
 import { bearExec } from "../utils/bear-exec";
 import { logFullNote } from "../utils/log";
-import { getToken } from "../utils/config";
 import cmdFlags from "../utils/flags";
 import { argsWithPipe } from "../utils/read-pipe";
 
@@ -23,7 +22,8 @@ export default class OpenNote extends Command {
     "open-note": cmdFlags["open-note"],
     selected: cmdFlags.selected,
     pin: cmdFlags.pin,
-    edit: cmdFlags.edit
+    edit: cmdFlags.edit,
+    token: cmdFlags.token
   };
 
   static args = [{ name: "id", description: "note unique identifier" }];
@@ -31,8 +31,7 @@ export default class OpenNote extends Command {
   async run() {
     const { args: cmdArgs, flags } = this.parse(OpenNote);
     const args = await argsWithPipe(OpenNote.args, cmdArgs);
-    const token = getToken(this.config.configDir);
-    const params = { ...args, ...flags, token };
+    const params = { ...args, ...flags };
 
     const response = await bearExec<FullNote>("open-note", params);
     logFullNote(response);

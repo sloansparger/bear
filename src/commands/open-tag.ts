@@ -2,7 +2,6 @@ import { Command } from "@oclif/command";
 import { NotesResponse } from "../types";
 import { bearExec } from "../utils/bear-exec";
 import { logNotes } from "../utils/log";
-import { getToken } from "../utils/config";
 import cmdFlags from "../utils/flags";
 import { argsWithPipe } from "../utils/read-pipe";
 
@@ -13,16 +12,16 @@ export default class OpenTag extends Command {
   ].join("\n");
 
   static flags = {
-    help: cmdFlags.help
+    help: cmdFlags.help,
+    token: cmdFlags.token
   };
 
   static args = [{ name: "name", description: "tag name" }];
 
   async run() {
-    const { args: cmdArgs } = this.parse(OpenTag);
+    const { args: cmdArgs, flags } = this.parse(OpenTag);
     const args = await argsWithPipe(OpenTag.args, cmdArgs, true);
-    const token = getToken(this.config.configDir);
-    const params = { ...args, token };
+    const params = { ...args, ...flags };
 
     const response = await bearExec<NotesResponse>("open-tag", params);
     logNotes(response);
