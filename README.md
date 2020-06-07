@@ -85,7 +85,7 @@ DESCRIPTION
   Returns note's contents.
 ```
 
-_See code: [src/commands/add-file.ts](https://github.com/sloansparger/bear/blob/v0.1.1/src/commands/add-file.ts)_
+_See code: [src/commands/add-file.ts](https://github.com/sloansparger/bear/blob/v0.1.2/src/commands/add-file.ts)_
 
 ## `bear add-text [TEXT]`
 
@@ -128,7 +128,7 @@ DESCRIPTION
   Returns note's contents.
 ```
 
-_See code: [src/commands/add-text.ts](https://github.com/sloansparger/bear/blob/v0.1.1/src/commands/add-text.ts)_
+_See code: [src/commands/add-text.ts](https://github.com/sloansparger/bear/blob/v0.1.2/src/commands/add-text.ts)_
 
 ## `bear archive [ID]`
 
@@ -151,7 +151,7 @@ DESCRIPTION
   Encrypted notes can't be accessed with this call.
 ```
 
-_See code: [src/commands/archive.ts](https://github.com/sloansparger/bear/blob/v0.1.1/src/commands/archive.ts)_
+_See code: [src/commands/archive.ts](https://github.com/sloansparger/bear/blob/v0.1.2/src/commands/archive.ts)_
 
 ## `bear auth API-TOKEN`
 
@@ -171,7 +171,7 @@ DESCRIPTION
   Go to Bear → Help → API Token → Copy Token and paste into this command.
 ```
 
-_See code: [src/commands/auth.ts](https://github.com/sloansparger/bear/blob/v0.1.1/src/commands/auth.ts)_
+_See code: [src/commands/auth.ts](https://github.com/sloansparger/bear/blob/v0.1.2/src/commands/auth.ts)_
 
 ## `bear autocomplete [SHELL]`
 
@@ -212,7 +212,7 @@ OPTIONS
   -w, --show-window  force the opening of bear main window
 ```
 
-_See code: [src/commands/change-font.ts](https://github.com/sloansparger/bear/blob/v0.1.1/src/commands/change-font.ts)_
+_See code: [src/commands/change-font.ts](https://github.com/sloansparger/bear/blob/v0.1.2/src/commands/change-font.ts)_
 
 ## `bear change-theme [THEME]`
 
@@ -233,7 +233,7 @@ DESCRIPTION
   Some themes may require a Bear Pro subscription.
 ```
 
-_See code: [src/commands/change-theme.ts](https://github.com/sloansparger/bear/blob/v0.1.1/src/commands/change-theme.ts)_
+_See code: [src/commands/change-theme.ts](https://github.com/sloansparger/bear/blob/v0.1.2/src/commands/change-theme.ts)_
 
 ## `bear commands`
 
@@ -279,7 +279,7 @@ DESCRIPTION
   Returns unique note identifier of new note.
 ```
 
-_See code: [src/commands/create.ts](https://github.com/sloansparger/bear/blob/v0.1.1/src/commands/create.ts)_
+_See code: [src/commands/create.ts](https://github.com/sloansparger/bear/blob/v0.1.2/src/commands/create.ts)_
 
 ## `bear delete-tag [NAME]`
 
@@ -301,7 +301,7 @@ DESCRIPTION
   If the tag contains any locked note this call will not be performed.
 ```
 
-_See code: [src/commands/delete-tag.ts](https://github.com/sloansparger/bear/blob/v0.1.1/src/commands/delete-tag.ts)_
+_See code: [src/commands/delete-tag.ts](https://github.com/sloansparger/bear/blob/v0.1.2/src/commands/delete-tag.ts)_
 
 ## `bear grab-url [URL]`
 
@@ -324,7 +324,7 @@ DESCRIPTION
   Returns unique note identifier of new note.
 ```
 
-_See code: [src/commands/grab-url.ts](https://github.com/sloansparger/bear/blob/v0.1.1/src/commands/grab-url.ts)_
+_See code: [src/commands/grab-url.ts](https://github.com/sloansparger/bear/blob/v0.1.2/src/commands/grab-url.ts)_
 
 ## `bear help [COMMAND]`
 
@@ -359,7 +359,7 @@ OPTIONS
   -w, --show-window  force the opening of bear main window
 ```
 
-_See code: [src/commands/locked.ts](https://github.com/sloansparger/bear/blob/v0.1.1/src/commands/locked.ts)_
+_See code: [src/commands/locked.ts](https://github.com/sloansparger/bear/blob/v0.1.2/src/commands/locked.ts)_
 
 ## `bear open-note [ID]`
 
@@ -390,7 +390,7 @@ DESCRIPTION
   Returns the matched note's contents.
 ```
 
-_See code: [src/commands/open-note.ts](https://github.com/sloansparger/bear/blob/v0.1.1/src/commands/open-note.ts)_
+_See code: [src/commands/open-note.ts](https://github.com/sloansparger/bear/blob/v0.1.2/src/commands/open-note.ts)_
 
 ## `bear open-tag [NAME]`
 
@@ -411,7 +411,7 @@ DESCRIPTION
   Returns list of unique note identifiers and note titles.
 ```
 
-_See code: [src/commands/open-tag.ts](https://github.com/sloansparger/bear/blob/v0.1.1/src/commands/open-tag.ts)_
+_See code: [src/commands/open-tag.ts](https://github.com/sloansparger/bear/blob/v0.1.2/src/commands/open-tag.ts)_
 
 ## `bear rename-tag NAME [NEW-NAME]`
 
@@ -434,7 +434,7 @@ DESCRIPTION
   If the tag contains any locked note this call will not be performed.
 ```
 
-_See code: [src/commands/rename-tag.ts](https://github.com/sloansparger/bear/blob/v0.1.1/src/commands/rename-tag.ts)_
+_See code: [src/commands/rename-tag.ts](https://github.com/sloansparger/bear/blob/v0.1.2/src/commands/rename-tag.ts)_
 
 ## `bear search [TERM]`
 
@@ -457,7 +457,7 @@ DESCRIPTION
   Returns list of unique note identifiers and note titles.
 ```
 
-_See code: [src/commands/search.ts](https://github.com/sloansparger/bear/blob/v0.1.1/src/commands/search.ts)_
+_See code: [src/commands/search.ts](https://github.com/sloansparger/bear/blob/v0.1.2/src/commands/search.ts)_
 
 ## `bear tags`
 
@@ -477,7 +477,7 @@ DESCRIPTION
   Returns list of tag names.
 ```
 
-_See code: [src/commands/tags.ts](https://github.com/sloansparger/bear/blob/v0.1.1/src/commands/tags.ts)_
+_See code: [src/commands/tags.ts](https://github.com/sloansparger/bear/blob/v0.1.2/src/commands/tags.ts)_
 
 ## `bear today [SEARCH]`
 
@@ -502,7 +502,7 @@ DESCRIPTION
   BUG: There's an issue where fetching Today's notes causes bear to hold process open.
 ```
 
-_See code: [src/commands/today.ts](https://github.com/sloansparger/bear/blob/v0.1.1/src/commands/today.ts)_
+_See code: [src/commands/today.ts](https://github.com/sloansparger/bear/blob/v0.1.2/src/commands/today.ts)_
 
 ## `bear todo [SEARCH]`
 
@@ -525,7 +525,7 @@ DESCRIPTION
   BUG: There's an issue with bear that causes notes that match search with no Todo's to be returned.
 ```
 
-_See code: [src/commands/todo.ts](https://github.com/sloansparger/bear/blob/v0.1.1/src/commands/todo.ts)_
+_See code: [src/commands/todo.ts](https://github.com/sloansparger/bear/blob/v0.1.2/src/commands/todo.ts)_
 
 ## `bear trash [ID]`
 
@@ -548,7 +548,7 @@ DESCRIPTION
   Encrypted notes can't be used with this call.
 ```
 
-_See code: [src/commands/trash.ts](https://github.com/sloansparger/bear/blob/v0.1.1/src/commands/trash.ts)_
+_See code: [src/commands/trash.ts](https://github.com/sloansparger/bear/blob/v0.1.2/src/commands/trash.ts)_
 
 ## `bear untagged [SEARCH]`
 
@@ -570,7 +570,7 @@ DESCRIPTION
   Returns list of unique note identifiers and note titles.
 ```
 
-_See code: [src/commands/untagged.ts](https://github.com/sloansparger/bear/blob/v0.1.1/src/commands/untagged.ts)_
+_See code: [src/commands/untagged.ts](https://github.com/sloansparger/bear/blob/v0.1.2/src/commands/untagged.ts)_
 
 ## `bear update [CHANNEL]`
 
