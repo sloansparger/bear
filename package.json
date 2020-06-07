@@ -7,10 +7,7 @@
   "repository": "sloansparger/bear",
   "homepage": "https://github.com/sloansparger/bear",
   "bugs": "https://github.com/sloansparger/bear/issues",
-  "keywords": [
-    "bear",
-    "cli"
-  ],
+  "keywords": ["bear", "cli"],
   "main": "lib/index.js",
   "bin": {
     "bear": "./bin/run"
@@ -46,12 +43,7 @@
   "engines": {
     "node": ">=10.0.0"
   },
-  "files": [
-    "/bin",
-    "/lib",
-    "/npm-shrinkwrap.json",
-    "/oclif.manifest.json"
-  ],
+  "files": ["/bin", "/lib", "/npm-shrinkwrap.json", "/oclif.manifest.json"],
   "types": "lib/index.d.ts",
   "oclif": {
     "commands": "./lib/commands",
@@ -66,7 +58,8 @@
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",
-    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "copy-xcall": "cp -r ./src/utils/xcall/xcall.app lib/utils/xcall && cp ./src/utils/xcall/xcall-license.txt ./lib/utils/xcall/xcall-license.txt",
+    "prepack": "rm -rf lib && tsc -b && npm run copy-xcall && oclif-dev manifest && oclif-dev readme",
     "test": "echo 'TODO'",
     "version": "oclif-dev readme && git add README.md"
   }
