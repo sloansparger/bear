@@ -49,6 +49,10 @@ Bear CLI includes and update helper, to get make sure you have the latest versio
 $ bear update
 ```
 
+# Contribution
+
+Right now the project would greatly benefit from people posting their workflows using this CLI. Feel free to contribute an example by adding a markdown file to the `examples` directory.
+
 # Commands
 
 <!-- commands -->
