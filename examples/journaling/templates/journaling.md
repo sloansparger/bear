@@ -12,6 +12,8 @@
 
 ## Side project notes
 
+## Investment notes
+
 #me/journal/<date>
 
 
